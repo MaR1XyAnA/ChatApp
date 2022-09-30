@@ -1,5 +1,6 @@
 ﻿using ChatApp.ClassFolder;
 using ChatApp.Viwe.WindowsFolder;
+using Microsoft.Win32.SafeHandles;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -38,13 +39,21 @@ namespace ChatApp
             HttpResponseMessage message = await httpClient.PostAsync("http://localhost:50203/api/Login", httpContent);
             if (message.IsSuccessStatusCode)
             {
+                if ((bool)RememberMeCheckBox.IsChecked)
+                {
+                    Properties.Settings.Default.LoginUser = LoginTextBox.Text;
+                    Properties.Settings.Default.PasswordUser = PasswordPasswordBox.Password;
+                    Properties.Settings.Default.Save();
+                }
                 MainWi mainWi = new MainWi();
                 mainWi.Show();
                 Close();
             }
             else
             {
-                MessageBox.Show("Ты умный? \nLOGIN \nили \nPASSWORD неверный");
+                Properties.Settings.Default.LoginUser = String.Empty;
+                Properties.Settings.Default.PasswordUser = String.Empty;
+                Properties.Settings.Default.Save();
             }
         }
 
