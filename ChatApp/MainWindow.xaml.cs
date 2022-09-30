@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,19 +32,22 @@ namespace ChatApp
 
         private async void SignIn(object sender, RoutedEventArgs e) // Ассинхронный метод
         {
+            string ServerAddress;
+            ServerAddress = "http://localhost:50203/api/Login";
+
             httpClient.DefaultRequestHeaders.Accept.Add
                 (new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json")); // WPF дружит с JSON
             var Content = new UserData { username = LoginTextBox.Text, password = PasswordPasswordBox.Password };
             HttpContent httpContent = new StringContent
                 (JsonConvert.SerializeObject(Content), Encoding.UTF8, "application/json"); // подключаем HttpContent
-            HttpResponseMessage message = await httpClient.PostAsync("http://localhost:50203/api/Login", httpContent);
+            HttpResponseMessage message = await httpClient.PostAsync(ServerAddress, httpContent);
             if (message.IsSuccessStatusCode)
             {
-                if ((bool)RememberMeCheckBox.IsChecked)
+                if ((bool)RememberMeCheckBox.IsChecked) //Проверяем, нажат ли CheckBox
                 {
-                    Properties.Settings.Default.LoginUser = LoginTextBox.Text;
-                    Properties.Settings.Default.PasswordUser = PasswordPasswordBox.Password;
-                    Properties.Settings.Default.Save();
+                    Properties.Settings.Default.LoginUser = LoginTextBox.Text; //Сохраняем логин
+                    Properties.Settings.Default.PasswordUser = PasswordPasswordBox.Password; // Сохраняем пароль
+                    Properties.Settings.Default.Save(); // Сохраняем
                 }
                 MainWi mainWi = new MainWi();
                 mainWi.Show();
