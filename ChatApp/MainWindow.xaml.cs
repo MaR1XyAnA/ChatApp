@@ -28,6 +28,16 @@ namespace ChatApp
         public MainWindow()
         {
             InitializeComponent();
+            if(!string.IsNullOrEmpty(LoginTextBox.Text = Properties.Settings.Default.LoginUser) &&
+               !string.IsNullOrEmpty(PasswordPasswordBox.Password = Properties.Settings.Default.PasswordUser))
+            {
+                Enter();
+            }
+        }
+        private async void Enter()
+        {
+            LoginTextBox.Text = Properties.Settings.Default.LoginUser; // Вытягиваем в LoginTextBox логин пользователя
+            PasswordPasswordBox.Password = Properties.Settings.Default.PasswordUser; // Вытягиваем в PasswordPasswordBox пароль пользователя
         }
 
         private async void SignIn(object sender, RoutedEventArgs e) // Ассинхронный метод
@@ -43,11 +53,11 @@ namespace ChatApp
             HttpResponseMessage message = await httpClient.PostAsync(ServerAddress, httpContent);
             if (message.IsSuccessStatusCode)
             {
-                if ((bool)RememberMeCheckBox.IsChecked) //Проверяем, нажат ли CheckBox
+                if ((bool)RememberMeCheckBox.IsChecked) // Проверяем, нажат ли CheckBox
                 {
-                    Properties.Settings.Default.LoginUser = LoginTextBox.Text; //Сохраняем логин
-                    Properties.Settings.Default.PasswordUser = PasswordPasswordBox.Password; // Сохраняем пароль
-                    Properties.Settings.Default.Save(); // Сохраняем
+                    Properties.Settings.Default.LoginUser = LoginTextBox.Text; // Сохраняем логин в приложении
+                    Properties.Settings.Default.PasswordUser = PasswordPasswordBox.Password; // Сохраняем пароль в приложении
+                    Properties.Settings.Default.Save(); // Сохраняем данные в приложении
                 }
                 MainWi mainWi = new MainWi();
                 mainWi.Show();
@@ -55,9 +65,9 @@ namespace ChatApp
             }
             else
             {
-                Properties.Settings.Default.LoginUser = String.Empty;
-                Properties.Settings.Default.PasswordUser = String.Empty;
-                Properties.Settings.Default.Save();
+                Properties.Settings.Default.LoginUser = String.Empty; // Сохраняем логин в приложении
+                Properties.Settings.Default.PasswordUser = String.Empty; // Сохраняем пароль в приложении
+                Properties.Settings.Default.Save(); // Сохраняем данные в приложении
             }
         }
 
