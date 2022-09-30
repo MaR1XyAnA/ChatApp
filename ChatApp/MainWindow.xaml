@@ -25,6 +25,14 @@
                     Height="30" 
                     Width="500"  
                     x:Name="PasswordPasswordBox"/>
+                <CheckBox
+                    Content="Запомнить меня"
+                    Height="20"
+                    Width="200"
+                    FontSize="18"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Margin="10 5 0 0"/>
             </StackPanel>
             <Button
                 Margin="0 20 0 0"

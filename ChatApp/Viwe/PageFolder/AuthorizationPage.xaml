@@ -44,6 +44,8 @@
                 Style="{StaticResource MainStylePasswordBox}"/>
         </StackPanel>
         <Button        
+            x:Name="NextButton"
+            Click="SignIn"
             Content="ВОЙТИ"
             Height="50"
             Width="200"
