@@ -1,4 +1,5 @@
 ﻿using ChatApp.ClassFolder;
+using ChatApp.Viwe.WindowsFolder;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,9 @@ namespace ChatApp
             HttpResponseMessage message = await httpClient.PostAsync("http://localhost:50203/api/Login", httpContent);
             if (message.IsSuccessStatusCode)
             {
-                MessageBox.Show("Я куми кудасай");
+                MainWi mainWi = new MainWi();
+                mainWi.Show();
+                Close();
             }
             else
             {
