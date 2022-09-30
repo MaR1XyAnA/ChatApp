@@ -29,15 +29,16 @@ namespace ChatApp
 
         private async void SignIn(object sender, RoutedEventArgs e) // Ассинхронный метод
         {
-            string ServerAddress;
-            ServerAddress = "http://localhost:50203/api/Login";
+            string ServerAddressString, JsonString;
+            ServerAddressString = "http://localhost:50203/api/Login";
+            JsonString = "application/json";
 
             httpClient.DefaultRequestHeaders.Accept.Add
-                (new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json")); // WPF дружит с JSON
+                (new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(JsonString)); // WPF дружит с JSON
             var Content = new UserData { username = LoginTextBox.Text, password = PasswordPasswordBox.Password };
             HttpContent httpContent = new StringContent
-                (JsonConvert.SerializeObject(Content), Encoding.UTF8, "application/json"); // подключаем HttpContent
-            HttpResponseMessage message = await httpClient.PostAsync(ServerAddress, httpContent);
+                (JsonConvert.SerializeObject(Content), Encoding.UTF8, JsonString); // подключаем HttpContent
+            HttpResponseMessage message = await httpClient.PostAsync(ServerAddressString, httpContent);
             if (message.IsSuccessStatusCode)
             {
                 if ((bool)RememberMeCheckBox.IsChecked) // Проверяем, нажат ли CheckBox
