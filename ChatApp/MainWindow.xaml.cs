@@ -28,8 +28,8 @@ namespace ChatApp
         public MainWindow()
         {
             InitializeComponent();
-            if(!string.IsNullOrEmpty(LoginTextBox.Text = Properties.Settings.Default.LoginUser) &&
-               !string.IsNullOrEmpty(PasswordPasswordBox.Password = Properties.Settings.Default.PasswordUser))
+            if(!string.IsNullOrEmpty(LoginTextBox.Text = Properties.Settings.Default.LoginUser) && // Проверяет, если что-то в этих значениях
+               !string.IsNullOrEmpty(PasswordPasswordBox.Password = Properties.Settings.Default.PasswordUser)) // Если да, то он их выводит в эл. управления
             {
                 Enter();
             }
