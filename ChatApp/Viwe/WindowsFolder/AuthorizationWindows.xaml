@@ -1,0 +1,51 @@
+﻿<Window x:Class="ChatApp.Viwe.WindowsFolder.AuthorizationWindows"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChatApp.Viwe.WindowsFolder"
+        mc:Ignorable="d"
+        Style="{StaticResource WindowsStyle}"
+        WindowStartupLocation="CenterScreen"
+        Height="350" Width="600">
+    <Border CornerRadius="20" Background="#443B50" BorderBrush="Transparent">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Frame
+               Grid.Row="1"
+               x:Name="MainFrame"
+                Margin="10"
+               NavigationUIVisibility="Hidden"/>
+            <Grid Background="Transparent" x:Name="SpaseBarGrid" MouseDown="SpaseBarGrid_MouseDown">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <Button 
+                        ToolTip="СВЕРНУТЬ"
+                        x:Name="RollUpButton"
+                        Click="RollUpButton_Click"
+                        Content="—"
+                        Width="55" 
+                        Height="32"
+                        Style="{StaticResource SpareButton}">
+                        <Button.Effect>
+                            <BlurEffect Radius="1"/>
+                        </Button.Effect>
+                    </Button>
+                    <Button 
+                        Click="CloseButton_Click"
+                        x:Name="CloseButton"
+                        Content="✕"
+                        Width="55" 
+                        Height="32"
+                        Style="{StaticResource SpareButtonClose}">
+                        <Button.Effect>
+                            <BlurEffect Radius="1"/>
+                        </Button.Effect>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
