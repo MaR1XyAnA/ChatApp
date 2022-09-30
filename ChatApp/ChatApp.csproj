@@ -58,9 +58,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Viwe\PageFolder\AuthorizationPage.xaml.cs">
-      <DependentUpon>AuthorizationPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Viwe\WindowsFolder\AuthorizationWindows.xaml.cs">
       <DependentUpon>AuthorizationWindows.xaml</DependentUpon>
     </Compile>
@@ -80,10 +77,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Viwe\PageFolder\AuthorizationPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Viwe\WindowsFolder\AuthorizationWindows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -124,6 +117,9 @@
   <ItemGroup>
     <Resource Include="ContentFolder\IconsFolder\PasswordIcons.png" />
     <Resource Include="ContentFolder\IconsFolder\UsersIcons.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Viwe\PageFolder\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
