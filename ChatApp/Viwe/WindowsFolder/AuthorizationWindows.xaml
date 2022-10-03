@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Style="{StaticResource WindowsStyle}"
         WindowStartupLocation="CenterScreen"
-        Height="350" Width="600">
+        Height="350" Width="600"
+        Title="АВТОРИЗАЦИЯ">
     <Border CornerRadius="20" Background="#443B50" BorderBrush="Transparent">
         <Grid>
             <Grid.RowDefinitions>
@@ -23,7 +24,7 @@
                     Margin="0 10 0 40"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"/>
-                <StackPanel Margin="0 0 0 5" Orientation="Horizontal">
+                <StackPanel ToolTip="ПОЛЕ ДЛЯ ВВОДА ЛОГИНА" Margin="0 0 0 5" Orientation="Horizontal">
                     <Grid Background="#FF2D2550">
                         <Border Height="35" Width="35">
                             <Image
@@ -37,7 +38,7 @@
                         Height="40"
                         Width="500"/>
                 </StackPanel>
-                <StackPanel Margin="0 5 0 0" Orientation="Horizontal">
+                <StackPanel x:Name="VisibilityPasswordFalseStackPanel" ToolTip="ПОЛЕ ДЛЯ ВВОДА ПАРОЛЯ" Margin="0 5 0 0" Orientation="Horizontal">
                     <Grid Background="#FF2D2550">
                         <Border Height="35" Width="35">
                             <Image
@@ -50,22 +51,69 @@
                         Height="40"
                         Width="500"
                         Style="{StaticResource MainStylePasswordBox}"/>
+                    <Button
+                        ToolTip="ПОКАЗАТЬ ПАРОЛЬ"
+                        x:Name="VisibilityPasswordFalseButton"
+                        Click="VisibilityPasswordFalseButton_Click"
+                        Style="{StaticResource TextButton}"
+                        Height="35"
+                        Width="35">
+                        <Button.Background>
+                            <ImageBrush ImageSource="\ContentFolder\IconsFolder\ViseblTrue.png"/>
+                        </Button.Background>
+                    </Button>
+                </StackPanel>
+                <StackPanel Visibility="Collapsed" x:Name="VisibilityPasswordTrueStackPanel" ToolTip="ПОЛЕ ДЛЯ ВВОДА ПАРОЛЯ" Margin="0 5 0 0" Orientation="Horizontal">
+                    <Grid Background="#FF2D2550">
+                        <Border Height="35" Width="35">
+                            <Image
+                                Margin="5"
+                                Source="\ContentFolder\IconsFolder\PasswordIcons.png"/>
+                        </Border>
+                    </Grid>
+                    <TextBox
+                        x:Name="PasswordTextBox"
+                        Height="40"
+                        Width="500"
+                        Style="{StaticResource MainStyleTextBox}"/>
+                    <Button
+                        ToolTip="СКРЫТЬ ПАРОЛЬ"
+                        x:Name="VisibilityPasswordTrueButton"
+                        Click="VisibilityPasswordTrueButton_Click"
+                        Style="{StaticResource TextButton}"
+                        Height="35"
+                        Width="35">
+                        <Button.Background>
+                            <ImageBrush ImageSource="\ContentFolder\IconsFolder\VisebalFols.png"/>
+                        </Button.Background>
+                    </Button>
                 </StackPanel>
                 <CheckBox
+                    ToolTip="КНОПКА ДЛЯ ЗАПОМИНАНИЯ ЛОГИНА И ПАРОЛЯ"
                     Height="20"
                     Content="ЗАПОМНИТЬ МЕНЯ"
                     Style="{StaticResource MainStyleCheckBox}"
                     Margin="40 5 0 0"
                     Name="RememberMeCheckBox"/>
-                <Button        
+                <Button     
+                    ToolTip="КНОПКА ДЛЯ ВХОДА"
                     x:Name="NextButton"
                     Click="SignIn"
                     Content="ВОЙТИ"
                     Height="50"
-                    Width="200"
+                    Width="220"
                     Margin="0 20 0 0"/>
             </StackPanel>
             <Grid Background="Transparent" x:Name="SpaseBarGrid" MouseDown="SpaseBarGrid_MouseDown">
+                <Border Background="#FF2D2550" CornerRadius="20 20 0 0"/>
+                <TextBlock
+                    FontFamily="\ContentFolder\FamilyFolder\#Rubik Glitch"
+                    Text="АВТОРИЗАЦИЯ"
+                    FontSize="18"
+                    Foreground="#E2C2D3"
+                    Margin="10 0 0 0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"/>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
                     <Button 
                         ToolTip="СВЕРНУТЬ"

@@ -17,7 +17,7 @@ namespace ChatApp.Viwe.WindowsFolder
         {
             InitializeComponent();
             if (!string.IsNullOrEmpty(LoginTextBox.Text = Properties.Settings.Default.LoginUser) && // Проверяет, если что-то в этих значениях
-               !string.IsNullOrEmpty(PasswordPasswordBox.Password = Properties.Settings.Default.PasswordUser)) // Если да, то он их выводит в эл. управления
+                !string.IsNullOrEmpty(PasswordPasswordBox.Password = Properties.Settings.Default.PasswordUser)) // Если да, то он их выводит в эл. управления
             {
                 Enter();
             }
@@ -31,6 +31,12 @@ namespace ChatApp.Viwe.WindowsFolder
 
         private async void SignIn(object sender, RoutedEventArgs e) // Ассинхронный метод
         {
+            string PasswordVisibleString;
+            PasswordVisibleString = Convert.ToString(PasswordTextBox.Text);
+            PasswordPasswordBox.Password = PasswordVisibleString;
+            VisibilityPasswordFalseStackPanel.Visibility = Visibility.Visible;
+            VisibilityPasswordTrueStackPanel.Visibility = Visibility.Collapsed;
+
             string ServerAddressString, JsonString;
             ServerAddressString = "http://localhost:50203/api/Login";
             JsonString = "application/json";
@@ -66,6 +72,8 @@ namespace ChatApp.Viwe.WindowsFolder
             public string password { get; set; } // Тип данных, как в БД
         }
 
+        // Обработчик события работы над окном
+        #region WindowsEddit
         private void SpaseBarGrid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -83,5 +91,26 @@ namespace ChatApp.Viwe.WindowsFolder
         {
             WindowState = WindowState.Minimized;
         }
+        #endregion
+        // Опработчик события показать или скрыть пароль
+        #region VisibilityPassword
+        private void VisibilityPasswordFalseButton_Click(object sender, RoutedEventArgs e)
+        {
+            string PasswordVisibleString;
+            PasswordVisibleString = Convert.ToString(PasswordPasswordBox.Password);
+            PasswordTextBox.Text = PasswordVisibleString;
+            VisibilityPasswordFalseStackPanel.Visibility = Visibility.Collapsed;
+            VisibilityPasswordTrueStackPanel.Visibility = Visibility.Visible;
+        }
+
+        private void VisibilityPasswordTrueButton_Click(object sender, RoutedEventArgs e)
+        {
+            string PasswordVisibleString;
+            PasswordVisibleString = Convert.ToString(PasswordTextBox.Text);
+            PasswordPasswordBox.Password = PasswordVisibleString;
+            VisibilityPasswordFalseStackPanel.Visibility = Visibility.Visible;
+            VisibilityPasswordTrueStackPanel.Visibility = Visibility.Collapsed;
+        }
+        #endregion
     }
 }

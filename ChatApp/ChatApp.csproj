@@ -121,5 +121,12 @@
   <ItemGroup>
     <Folder Include="Viwe\PageFolder\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ContentFolder\IconsFolder\CollegeChatAppIcons.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ContentFolder\IconsFolder\VisebalFols.png" />
+    <Resource Include="ContentFolder\IconsFolder\ViseblTrue.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
