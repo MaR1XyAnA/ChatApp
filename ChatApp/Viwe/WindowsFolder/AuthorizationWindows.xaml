@@ -32,11 +32,13 @@
                                 Source="\ContentFolder\IconsFolder\UsersIcons.png"/>
                         </Border>
                     </Grid>
+                    <Grid>
                     <TextBox
                         Style="{StaticResource MainStyleTextBox}" 
                         x:Name="LoginTextBox"
                         Height="40"
                         Width="500"/>
+                    </Grid>
                 </StackPanel>
                 <StackPanel x:Name="VisibilityPasswordFalseStackPanel" ToolTip="ПОЛЕ ДЛЯ ВВОДА ПАРОЛЯ" Margin="0 5 0 0" Orientation="Horizontal">
                     <Grid Background="#FF2D2550">
@@ -46,22 +48,27 @@
                                 Source="\ContentFolder\IconsFolder\PasswordIcons.png"/>
                         </Border>
                     </Grid>
-                    <PasswordBox
-                        x:Name="PasswordPasswordBox"
-                        Height="40"
-                        Width="500"
-                        Style="{StaticResource MainStylePasswordBox}"/>
-                    <Button
-                        ToolTip="ПОКАЗАТЬ ПАРОЛЬ"
-                        x:Name="VisibilityPasswordFalseButton"
-                        Click="VisibilityPasswordFalseButton_Click"
-                        Style="{StaticResource TextButton}"
-                        Height="35"
-                        Width="35">
-                        <Button.Background>
-                            <ImageBrush ImageSource="\ContentFolder\IconsFolder\ViseblTrue.png"/>
-                        </Button.Background>
-                    </Button>
+                    <Grid>
+                        <PasswordBox
+                            x:Name="PasswordPasswordBox"
+                            Height="40"
+                            Width="500"
+                            Style="{StaticResource MainStylePasswordBox}"/>
+                        <Button
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            Margin="0 0 5 0"
+                            ToolTip="ПОКАЗАТЬ ПАРОЛЬ"
+                            x:Name="VisibilityPasswordFalseButton"
+                            Click="VisibilityPasswordFalseButton_Click"
+                            Style="{StaticResource TextButton}"
+                            Height="35"
+                            Width="35">
+                            <Button.Background>
+                                <ImageBrush ImageSource="\ContentFolder\IconsFolder\ViseblTrue.png"/>
+                            </Button.Background>
+                        </Button>
+                    </Grid>
                 </StackPanel>
                 <StackPanel Visibility="Collapsed" x:Name="VisibilityPasswordTrueStackPanel" ToolTip="ПОЛЕ ДЛЯ ВВОДА ПАРОЛЯ" Margin="0 5 0 0" Orientation="Horizontal">
                     <Grid Background="#FF2D2550">
@@ -71,12 +78,16 @@
                                 Source="\ContentFolder\IconsFolder\PasswordIcons.png"/>
                         </Border>
                     </Grid>
+                    <Grid>
                     <TextBox
                         x:Name="PasswordTextBox"
                         Height="40"
                         Width="500"
                         Style="{StaticResource MainStyleTextBox}"/>
                     <Button
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Margin="0 0 5 0"
                         ToolTip="СКРЫТЬ ПАРОЛЬ"
                         x:Name="VisibilityPasswordTrueButton"
                         Click="VisibilityPasswordTrueButton_Click"
@@ -87,14 +98,16 @@
                             <ImageBrush ImageSource="\ContentFolder\IconsFolder\VisebalFols.png"/>
                         </Button.Background>
                     </Button>
+                    </Grid>
                 </StackPanel>
                 <CheckBox
                     ToolTip="КНОПКА ДЛЯ ЗАПОМИНАНИЯ ЛОГИНА И ПАРОЛЯ"
                     Height="20"
                     Content="ЗАПОМНИТЬ МЕНЯ"
                     Style="{StaticResource MainStyleCheckBox}"
-                    Margin="40 5 0 0"
-                    Name="RememberMeCheckBox"/>
+                    Margin="35.8 3 0 0"
+                    Name="RememberMeCheckBox">
+                </CheckBox>
                 <Button     
                     ToolTip="КНОПКА ДЛЯ ВХОДА"
                     x:Name="NextButton"
@@ -104,6 +117,25 @@
                     Width="220"
                     Margin="0 20 0 0"/>
             </StackPanel>
+            <Border
+                x:Name="InfoeErrorBorder"
+                VerticalAlignment="Top"
+                Grid.Row="1"
+                Visibility="Collapsed"
+                CornerRadius="0 0 20 20"
+                Height="50"
+                Width="540"
+                Background="#FF2D2550">
+                <TextBlock
+                    x:Name="InfoeErrorTextBlock"
+                    Visibility="Collapsed"
+                    FontFamily="\ContentFolder\FamilyFolder\#Rubik Glitch"
+                    Text="CollegeChatApp"
+                    FontSize="18"
+                    Foreground="Red"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+            </Border>
             <Grid Background="Transparent" x:Name="SpaseBarGrid" MouseDown="SpaseBarGrid_MouseDown">
                 <Border Background="#FF2D2550" CornerRadius="20 20 0 0"/>
                 <TextBlock
