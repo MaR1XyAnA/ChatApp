@@ -8,5 +8,11 @@ namespace ChatApp.ClassFolder
 {
     public partial class EmplyeeClass
     {
-    }
+        public string GetHour
+        {
+            get
+            {
+
+            }
+        }
 }

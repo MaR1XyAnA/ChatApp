@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClassFolder\ParticalEmploeeClass.cs" />
     <Compile Include="Viwe\WindowsFolder\AuthorizationWindows.xaml.cs">
       <DependentUpon>AuthorizationWindows.xaml</DependentUpon>
     </Compile>
