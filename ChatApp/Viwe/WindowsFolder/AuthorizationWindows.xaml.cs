@@ -46,17 +46,20 @@ namespace ChatApp.Viwe.WindowsFolder
             VisibilityPasswordTrueStackPanel.Visibility = Visibility.Collapsed;
 
             string ServerAddressString, JsonString;
-            ServerAddressString = "http://localhost:50203/api/Login";
+            ServerAddressString = "http://localhost:11111/api/authorization_user";
             JsonString = "application/json";
 
             httpClient.DefaultRequestHeaders.Accept.Add
                 (new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(JsonString)); // WPF дружит с JSON
-            var Content = new UserData { username = LoginTextBox.Text, password = PasswordPasswordBox.Password };
+            var Content = new UserData { LoginUser = LoginTextBox.Text, PasswordUser = PasswordPasswordBox.Password };
             HttpContent httpContent = new StringContent
                 (JsonConvert.SerializeObject(Content), Encoding.UTF8, JsonString); // подключаем HttpContent
             HttpResponseMessage message = await httpClient.PostAsync(ServerAddressString, httpContent);
             if (message.IsSuccessStatusCode)
             {
+                var curContebt = await message.Content.ReadAsStringAsync();
+                emplyeeClass = JsonConvert.DeserializeObject<EmplyeeClass>(curContebt);
+
                 if ((bool)RememberMeCheckBox.IsChecked) // Проверяем, нажат ли CheckBox
                 {
                     Properties.Settings.Default.LoginUser = LoginTextBox.Text; // Сохраняем логин в приложении
@@ -78,8 +81,8 @@ namespace ChatApp.Viwe.WindowsFolder
         }
         public class UserData // создали класс, который будет получать данные из LoginTextBox и  PasswordPasswordBox
         {
-            public string username { get; set; } // Тип данных, как в БД
-            public string password { get; set; } // Тип данных, как в БД
+            public string LoginUser { get; set; } // Тип данных, как в БД
+            public string PasswordUser { get; set; } // Тип данных, как в БД
         }
 
         // Обработчик события работы над окном

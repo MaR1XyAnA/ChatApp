@@ -23,8 +23,8 @@ namespace ChatApp.Viwe.WindowsFolder
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
+            AuthorizationWindows authorizationWindows = new AuthorizationWindows();
+            authorizationWindows.Show();
             Close();
         }
     }
