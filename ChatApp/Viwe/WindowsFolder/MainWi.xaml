@@ -34,6 +34,10 @@
                         Handler="DataGridRow_MouseDoubleClick"/>
                 </Style>
             </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="НАЗВАНИЕ ЧАТА"/>
+                <DataGridTextColumn Header="СООБЩЕНИЕ"/>
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
     

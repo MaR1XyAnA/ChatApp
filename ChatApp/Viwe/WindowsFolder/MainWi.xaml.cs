@@ -1,4 +1,5 @@
 ﻿using ChatApp.ClassFolder;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,23 @@ namespace ChatApp.Viwe.WindowsFolder
         public async void GridLoad()
         {
             HttpResponseMessage chatrooms = await AuthorizationWindows.httpClient.GetAsync("http://localhost:11111/api/ChatRoomTables");
+            var roomscontent = await chatrooms.Content.ReadAsStringAsync();
+            HttpResponseMessage employee = await AuthorizationWindows.httpClient.GetAsync("http://localhost:11111/api/ChatRoomEmployee");
+            var employeecontent = await chatrooms.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<List<ChatRoomEmplooe>>(employeecontent)
+                .Where(data => data.PersonalNumberCRU == AuthorizationWindows.emplyeeClass.id).ToList();
 
+            if(result == null)
+            {
+                MessageBox.Show("!У ВАС НЕТ НИОДНОГО ЧАТА!");
+            }
+            else
+            {
+                var rooms = JsonConvert.DeserializeObject<List<ChatRoom>>(roomscontent).ToList();
+                ChatList.ItemsSource = from r in rooms
+                                       join rez in result on r.PersonalNumberChatRoom equals rez.PNChatRoom
+                                       select r;
+            }
         }
 
         private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
