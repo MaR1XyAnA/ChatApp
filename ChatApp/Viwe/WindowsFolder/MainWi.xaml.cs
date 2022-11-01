@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,6 +19,7 @@ namespace ChatApp.Viwe.WindowsFolder
     public partial class MainWi : Window
     {
         public List<ChatRoom> _ChatRoom = new List<ChatRoom>();
+        public List<ChatRoomEmplooe> _ChatRoomEmplooes = new List<ChatRoomEmplooe>();
 
         public MainWi()
         {
@@ -34,6 +36,7 @@ namespace ChatApp.Viwe.WindowsFolder
 
         public async void GridLoad()
         {
+            HttpResponseMessage chatrooms = await AuthorizationWindows.httpClient.GetAsync("http://localhost:11111/api/ChatRoomTables");
 
         }
 

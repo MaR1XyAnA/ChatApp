@@ -12,8 +12,8 @@ namespace ChatApp.Viwe.WindowsFolder
 {
     public partial class AuthorizationWindows : Window
     {
-        public HttpClient httpClient = new HttpClient(); // Подключили программу к сити интернет
-        public EmplyeeClass emplyeeClass; // Подключили класс
+        public static HttpClient httpClient = new HttpClient(); // Подключили программу к сити интернет
+        public static EmplyeeClass emplyeeClass; // Подключили класс
         public AuthorizationWindows()
         {
             InitializeComponent();
