@@ -7,13 +7,34 @@
         mc:Ignorable="d"
         Title="MainWi" Height="450" Width="800">
     <Grid>
-        <Button
-            VerticalAlignment="Bottom"
-            Margin="0 0 0 10"
-            Content="НАЗАД"
-            Name="BackButton"
-            Click="BackButton_Click"
-            Height="40"
-            Width="200"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1" x:Name="HelloGrid">
+            <TextBlock
+                Text="{Binding Hello}"/>
+            <Button
+                VerticalAlignment="Bottom"
+                Margin="0 0 0 10"
+                Content="НАЗАД"
+                Name="BackButton"
+                Click="BackButton_Click"
+                Height="40"
+                Width="200"/>
+        </Grid>
+        <DataGrid
+            x:Name="ChatList" 
+            IsReadOnly="True" 
+            AutoGenerateColumns="False">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <EventSetter
+                        Event="MouseDoubleClick"
+                        Handler="DataGridRow_MouseDoubleClick"/>
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
     </Grid>
+    
 </Window>

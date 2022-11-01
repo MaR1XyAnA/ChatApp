@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChatApp.ClassFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,9 +17,12 @@ namespace ChatApp.Viwe.WindowsFolder
 {
     public partial class MainWi : Window
     {
+        public List<ChatRoom> _ChatRoom = new List<ChatRoom>();
+
         public MainWi()
         {
             InitializeComponent();
+            HelloGrid.DataContext = AuthorizationWindows.emplyeeClass; /*_ChatRoom.ToList();*/
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -26,6 +30,16 @@ namespace ChatApp.Viwe.WindowsFolder
             AuthorizationWindows authorizationWindows = new AuthorizationWindows();
             authorizationWindows.Show();
             Close();
+        }
+
+        public async void GridLoad()
+        {
+
+        }
+
+        private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

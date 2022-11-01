@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChatApp.ClassFolder
 {
@@ -13,18 +9,28 @@ namespace ChatApp.ClassFolder
             get
             {
                 string name = "Доброй ночи!";
-                if(DateTime.Now.Hour >= 6 && DateTime.Now.Hour < 12)
+                if (DateTime.Now.Hour >= 6 && DateTime.Now.Hour < 12)
                 {
                     name = "Доброе утро!";
                 }
-                if (DateTime.Now.Hour >= 12 && DateTime.Now.Hour < 18)
+                else if (DateTime.Now.Hour >= 12 && DateTime.Now.Hour < 18)
                 {
                     name = "Доброе день!";
                 }
-                if (DateTime.Now.Hour >= 18 && DateTime.Now.Hour < 23)
+                else if (DateTime.Now.Hour >= 18 && DateTime.Now.Hour < 23)
                 {
                     name = "Доброе вечер!";
                 }
+                return name;
             }
         }
+        public string Hello
+        {
+            get
+            {
+                string HelloName = $"{GetHour} {FullName}";
+                return HelloName;
+            }
+        }
+    }
 }
