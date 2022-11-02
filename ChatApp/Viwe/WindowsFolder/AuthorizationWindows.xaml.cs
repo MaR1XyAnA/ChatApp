@@ -51,10 +51,18 @@ namespace ChatApp.Viwe.WindowsFolder
 
             httpClient.DefaultRequestHeaders.Accept.Add
                 (new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(JsonString)); // WPF дружит с JSON
-            var Content = new UserData { LoginUser = LoginTextBox.Text, PasswordUser = PasswordPasswordBox.Password };
+
+            
+            var Content = new UserData 
+            {
+                LoginUser = LoginTextBox.Text, 
+                PasswordUser = PasswordPasswordBox.Password
+            };
             HttpContent httpContent = new StringContent
                 (JsonConvert.SerializeObject(Content), Encoding.UTF8, JsonString); // подключаем HttpContent
+
             HttpResponseMessage message = await httpClient.PostAsync(ServerAddressString, httpContent);
+
             if (message.IsSuccessStatusCode)
             {
                 var curContebt = await message.Content.ReadAsStringAsync();

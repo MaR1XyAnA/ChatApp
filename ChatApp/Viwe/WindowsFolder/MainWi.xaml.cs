@@ -25,7 +25,8 @@ namespace ChatApp.Viwe.WindowsFolder
         public MainWi()
         {
             InitializeComponent();
-            HelloGrid.DataContext = AuthorizationWindows.emplyeeClass; /*_ChatRoom.ToList();*/
+            HelloGrid.DataContext = AuthorizationWindows.emplyeeClass;
+            GridLoad();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -37,10 +38,14 @@ namespace ChatApp.Viwe.WindowsFolder
 
         public async void GridLoad()
         {
-            HttpResponseMessage chatrooms = await AuthorizationWindows.httpClient.GetAsync("http://localhost:11111/api/ChatRoomTables");
+            string Link = "http://localhost:11111/api/ChatRoomTables";
+
+            HttpResponseMessage chatrooms = await AuthorizationWindows.httpClient.GetAsync(Link);
             var roomscontent = await chatrooms.Content.ReadAsStringAsync();
-            HttpResponseMessage employee = await AuthorizationWindows.httpClient.GetAsync("http://localhost:11111/api/ChatRoomEmployee");
-            var employeecontent = await chatrooms.Content.ReadAsStringAsync();
+
+            HttpResponseMessage employee = await AuthorizationWindows.httpClient.GetAsync(Link);
+            var employeecontent = await employee.Content.ReadAsStringAsync();
+
             var result = JsonConvert.DeserializeObject<List<ChatRoomEmplooe>>(employeecontent)
                 .Where(data => data.PersonalNumberCRU == AuthorizationWindows.emplyeeClass.id).ToList();
 

@@ -24,6 +24,7 @@
                 Width="200"/>
         </Grid>
         <DataGrid
+            Grid.Row="1"
             x:Name="ChatList" 
             IsReadOnly="True" 
             AutoGenerateColumns="False">
@@ -35,8 +36,14 @@
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="НАЗВАНИЕ ЧАТА"/>
-                <DataGridTextColumn Header="СООБЩЕНИЕ"/>
+                <DataGridTextColumn
+                    Header="НАЗВАНИЕ ЧАТА" 
+                    Width="*"
+                    Binding="{Binding PNChatRoom}"/>
+                <DataGridTextColumn 
+                    Header="СООБЩЕНИЕ"
+                    Width="*"
+                    Binding="{Binding PNUser}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

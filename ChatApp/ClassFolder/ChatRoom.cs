@@ -10,6 +10,6 @@ namespace ChatApp.ClassFolder
     {
         public int PersonalNumberChatRoom { get; set; }
         public string TopicChatRoom { get; set; }
-        public string LastMessage { get; set; } = null;
+        public string LastMessage { get; set; }
     }
 }
