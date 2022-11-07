@@ -58,11 +58,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClassFolder\ChatMessageClass.cs" />
     <Compile Include="ClassFolder\ChatRoom.cs" />
     <Compile Include="ClassFolder\ChatRoomEmplooe.cs" />
     <Compile Include="ClassFolder\ParticalEmploeeClass.cs" />
     <Compile Include="Viwe\WindowsFolder\AuthorizationWindows.xaml.cs">
       <DependentUpon>AuthorizationWindows.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Viwe\WindowsFolder\ChatMessage.xaml.cs">
+      <DependentUpon>ChatMessage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Viwe\WindowsFolder\MainWi.xaml.cs">
       <DependentUpon>MainWi.xaml</DependentUpon>
@@ -73,6 +77,10 @@
     </Compile>
     <Compile Include="ClassFolder\EmplyeeClass.cs" />
     <Page Include="Viwe\WindowsFolder\AuthorizationWindows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Viwe\WindowsFolder\ChatMessage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

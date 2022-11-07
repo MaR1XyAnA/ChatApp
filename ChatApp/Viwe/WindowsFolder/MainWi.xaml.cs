@@ -19,9 +19,9 @@ namespace ChatApp.Viwe.WindowsFolder
 {
     public partial class MainWi : Window
     {
-        public List<ChatRoom> _ChatRoom = new List<ChatRoom>();
+        public List<ChatRoom> _chatRoom = new List<ChatRoom>();
         public List<ChatRoomEmplooe> _ChatRoomEmplooes = new List<ChatRoomEmplooe>();
-
+        public static ChatRoom GetChatRoom;
         public MainWi()
         {
             InitializeComponent();
@@ -65,7 +65,10 @@ namespace ChatApp.Viwe.WindowsFolder
 
         private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            GetChatRoom = ChatList.SelectedItem as ChatRoom;
+            ChatMessage chatMessage = new ChatMessage();
+            chatMessage.Show();
+            this.Close();
         }
     }
 }
