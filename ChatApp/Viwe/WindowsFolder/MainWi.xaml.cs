@@ -56,9 +56,10 @@ namespace ChatApp.Viwe.WindowsFolder
             else
             {
                 var rooms = JsonConvert.DeserializeObject<List<ChatRoom>>(roomscontent).ToList();
-                ChatList.ItemsSource = from r in rooms
-                                       join rez in result on r.PersonalNumberChatRoom equals rez.PNChatRoom
-                                       select r;
+                ChatList.ItemsSource = 
+                    from r in rooms
+                    join rez in result on r.PersonalNumberChatRoom equals rez.PNChatRoom
+                    select r;
             }
         }
 

@@ -40,7 +40,7 @@ namespace ChatApp.Viwe.WindowsFolder
             #endregion
 
             string PasswordVisibleString;
-            PasswordVisibleString = Convert.ToString(PasswordTextBox.Text);
+            PasswordVisibleString = Convert.ToString(PasswordPasswordBox.Password);
             PasswordPasswordBox.Password = PasswordVisibleString;
             VisibilityPasswordFalseStackPanel.Visibility = Visibility.Visible;
             VisibilityPasswordTrueStackPanel.Visibility = Visibility.Collapsed;

@@ -43,7 +43,7 @@
                 <DataGridTextColumn 
                     Header="СООБЩЕНИЕ"
                     Width="*"
-                    Binding="{Binding PNUser}"/>
+                    Binding="{Binding LastMessage}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
