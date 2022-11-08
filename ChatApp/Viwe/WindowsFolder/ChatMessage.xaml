@@ -13,7 +13,7 @@
                 <DataTemplate>
                     <StackPanel>
                         <TextBlock 
-                            Text="{Binding TakeMessage}"/>
+                            Text="{Binding TextMessage}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

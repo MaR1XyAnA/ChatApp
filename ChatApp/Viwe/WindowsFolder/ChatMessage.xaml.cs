@@ -25,6 +25,7 @@ namespace ChatApp.Viwe.WindowsFolder
         {
             InitializeComponent();
             Title = MainWi.GetChatRoom.TopicChatRoom;
+            GetMEssage();
         }
         private async void GetMEssage()
         {

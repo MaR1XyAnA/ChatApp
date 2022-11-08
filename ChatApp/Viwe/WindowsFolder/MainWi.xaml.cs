@@ -38,12 +38,10 @@ namespace ChatApp.Viwe.WindowsFolder
 
         public async void GridLoad()
         {
-            string Link = "http://localhost:11111/api/ChatRoomTables";
-
-            HttpResponseMessage chatrooms = await AuthorizationWindows.httpClient.GetAsync(Link);
+            HttpResponseMessage chatrooms = await AuthorizationWindows.httpClient.GetAsync("http://localhost:11111/api/ChatRoomTables");
             var roomscontent = await chatrooms.Content.ReadAsStringAsync();
 
-            HttpResponseMessage employee = await AuthorizationWindows.httpClient.GetAsync(Link);
+            HttpResponseMessage employee = await AuthorizationWindows.httpClient.GetAsync("http://localhost:11111/api/ChatMessageTables");
             var employeecontent = await employee.Content.ReadAsStringAsync();
 
             var result = JsonConvert.DeserializeObject<List<ChatRoomEmplooe>>(employeecontent)

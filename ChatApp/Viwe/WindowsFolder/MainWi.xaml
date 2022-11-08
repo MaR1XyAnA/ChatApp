@@ -39,11 +39,11 @@
                 <DataGridTextColumn
                     Header="НАЗВАНИЕ ЧАТА" 
                     Width="*"
-                    Binding="{Binding PNChatRoom}"/>
+                    Binding="{Binding TopicChatRoom}"/>
                 <DataGridTextColumn 
                     Header="СООБЩЕНИЕ"
                     Width="*"
-                    Binding="{Binding LastMessage}"/>
+                    Binding="{Binding TextMessage}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
