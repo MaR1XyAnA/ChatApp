@@ -12,8 +12,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="1" x:Name="HelloGrid">
-            <TextBlock
-                Text="{Binding Hello}"/>
             <Button
                 VerticalAlignment="Bottom"
                 Margin="0 0 0 10"
@@ -24,6 +22,8 @@
                 Width="200"/>
         </Grid>
         <DataGrid
+            VerticalAlignment="Top"
+            Height="280"
             Grid.Row="1"
             x:Name="ChatList" 
             IsReadOnly="True" 
@@ -43,9 +43,8 @@
                 <DataGridTextColumn 
                     Header="СООБЩЕНИЕ"
                     Width="*"
-                    Binding="{Binding TextMessage}"/>
+                    Binding="{Binding GetLastMessage}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
-    
 </Window>

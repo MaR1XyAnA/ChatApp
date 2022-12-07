@@ -20,7 +20,7 @@ namespace ChatApp.Viwe.WindowsFolder
     public partial class MainWi : Window
     {
         public List<ChatRoom> _chatRoom = new List<ChatRoom>();
-        public List<ChatRoomEmplooe> _ChatRoomEmplooes = new List<ChatRoomEmplooe>();
+        public List<ChatRoomUserClass> _ChatRoomEmplooes = new List<ChatRoomUserClass>();
         public static ChatRoom GetChatRoom;
         public MainWi()
         {
@@ -38,14 +38,14 @@ namespace ChatApp.Viwe.WindowsFolder
 
         public async void GridLoad()
         {
-            HttpResponseMessage chatrooms = await AuthorizationWindows.httpClient.GetAsync("http://localhost:11111/api/ChatRoomTables");
+            HttpResponseMessage chatrooms = await AuthorizationWindows.httpClient.GetAsync("http://localhost:11111/ListChatRooms");
             var roomscontent = await chatrooms.Content.ReadAsStringAsync();
 
-            HttpResponseMessage employee = await AuthorizationWindows.httpClient.GetAsync("http://localhost:11111/api/ChatMessageTables");
+            HttpResponseMessage employee = await AuthorizationWindows.httpClient.GetAsync("http://localhost:11111/api/ChatRoomUserTables");
             var employeecontent = await employee.Content.ReadAsStringAsync();
 
-            var result = JsonConvert.DeserializeObject<List<ChatRoomEmplooe>>(employeecontent)
-                .Where(data => data.PersonalNumberCRU == AuthorizationWindows.emplyeeClass.id).ToList();
+            var result = JsonConvert.DeserializeObject<List<ChatRoomUserClass>>(employeecontent)
+                .Where(data => data.PNUser == AuthorizationWindows.emplyeeClass.id).ToList();
 
             if(result == null)
             {

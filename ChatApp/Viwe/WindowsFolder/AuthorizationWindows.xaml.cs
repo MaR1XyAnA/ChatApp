@@ -18,7 +18,8 @@ namespace ChatApp.Viwe.WindowsFolder
         {
             InitializeComponent();
             if (!string.IsNullOrEmpty(LoginTextBox.Text = Properties.Settings.Default.LoginUser) && // Проверяет, если что-то в этих значениях
-                !string.IsNullOrEmpty(PasswordPasswordBox.Password = Properties.Settings.Default.PasswordUser)) // Если да, то он их выводит в эл. управления
+                !string.IsNullOrEmpty(PasswordPasswordBox.Password = Properties.Settings.Default.PasswordUser) /*&&
+                !bool.Parse(RememberMeCheckBox.IsChecked = Properties.Settings.Default.CheckUser)*/) // Если да, то он их выводит в эл. управления
             {
                 Enter();
             }
@@ -70,6 +71,7 @@ namespace ChatApp.Viwe.WindowsFolder
 
                 if ((bool)RememberMeCheckBox.IsChecked) // Проверяем, нажат ли CheckBox
                 {
+                    Properties.Settings.Default.CheckUser = true; // Сохраняем логин в приложении
                     Properties.Settings.Default.LoginUser = LoginTextBox.Text; // Сохраняем логин в приложении
                     Properties.Settings.Default.PasswordUser = PasswordPasswordBox.Password; // Сохраняем пароль в приложении
                     Properties.Settings.Default.Save(); // Сохраняем данные в приложении

@@ -60,7 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="ClassFolder\ChatMessageClass.cs" />
     <Compile Include="ClassFolder\ChatRoom.cs" />
-    <Compile Include="ClassFolder\ChatRoomEmplooe.cs" />
+    <Compile Include="ClassFolder\ChatRoomUserClass.cs" />
     <Compile Include="ClassFolder\ParticalEmploeeClass.cs" />
     <Compile Include="Viwe\WindowsFolder\AuthorizationWindows.xaml.cs">
       <DependentUpon>AuthorizationWindows.xaml</DependentUpon>
