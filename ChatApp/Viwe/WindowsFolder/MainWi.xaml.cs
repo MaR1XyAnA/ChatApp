@@ -1,19 +1,10 @@
 ﻿using ChatApp.ClassFolder;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ChatApp.Viwe.WindowsFolder
 {
@@ -45,7 +36,7 @@ namespace ChatApp.Viwe.WindowsFolder
             var employeecontent = await employee.Content.ReadAsStringAsync();
 
             var result = JsonConvert.DeserializeObject<List<ChatRoomUserClass>>(employeecontent)
-                .Where(data => data.PNUser == AuthorizationWindows.emplyeeClass.id).ToList();
+                .Where(data => data.PNUser == AuthorizationWindows.emplyeeClass.PersonalNumberUser).ToList();
 
             if(result == null)
             {
@@ -56,7 +47,7 @@ namespace ChatApp.Viwe.WindowsFolder
                 var rooms = JsonConvert.DeserializeObject<List<ChatRoom>>(roomscontent).ToList();
                 ChatList.ItemsSource = 
                     from r in rooms
-                    join rez in result on r.PersonalNumberChatRoom equals rez.PNChatRoom
+                    join res in result on r.PersonalNumberChatRoom equals res.PNChatRoom
                     select r;
             }
         }

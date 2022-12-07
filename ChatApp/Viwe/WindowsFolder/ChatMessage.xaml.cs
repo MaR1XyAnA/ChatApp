@@ -33,7 +33,14 @@ namespace ChatApp.Viwe.WindowsFolder
             HttpResponseMessage message = await AuthorizationWindows.httpClient.GetAsync(Link);
             var messagecontent = await message.Content.ReadAsStringAsync();
             chatMessageClasses = JsonConvert.DeserializeObject<List<ChatMessageClass>>(messagecontent);
-            MessageListBox.ItemsSource = chatMessageClasses.Where(Сookies => Сookies.PersonalNumberMessage == MainWi.GetChatRoom.PersonalNumberChatRoom);
+            MessageListBox.ItemsSource = chatMessageClasses.Where(Сookies => Сookies.PNChatRoom == MainWi.GetChatRoom.PersonalNumberChatRoom);
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWi mainWi = new MainWi();
+            mainWi.Show();
+            this.Close();
         }
     }
 }

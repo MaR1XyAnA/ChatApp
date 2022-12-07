@@ -8,9 +8,9 @@ namespace ChatApp.ClassFolder
 {
     public partial class EmplyeeClass
     {
-        public int id { get; set; }
-        public string FullName { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
+        public string NameUser { get; set; }
+        public string LoginUser { get; set; }
+        public string PasswordUser { get; set; }
+        public int PersonalNumberUser { get; set; }
     }
 }

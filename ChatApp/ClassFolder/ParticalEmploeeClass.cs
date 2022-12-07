@@ -28,7 +28,7 @@ namespace ChatApp.ClassFolder
         {
             get
             {
-                string HelloName = $"{GetHour} {FullName}";
+                string HelloName = $"{GetHour} {NameUser}";
                 return HelloName;
             }
         }
