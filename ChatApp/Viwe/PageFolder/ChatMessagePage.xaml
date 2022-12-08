@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ChatApp.Viwe.PageFolder"
       mc:Ignorable="d" 
       Style="{StaticResource AuthorizationStyle}">
-    <Border Margin="10" CornerRadius="20">
+    <Border Margin="0" CornerRadius="20">
         <Border.Background>
             <ImageBrush ImageSource="\ContentFolder\IconsFolder\BackgraundImage.png" Stretch="UniformToFill"/>
         </Border.Background>
@@ -15,6 +15,24 @@
                 x:Name="MessageListBox"
                 Style="{StaticResource ListChatStyle}"
                 Background="Transparent">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="IsSelected" Value="{Binding Content.IsSelected, Mode=TwoWay, RelativeSource={RelativeSource Self}}"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <ContentPresenter/>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="BorderBrush" Value="Red"/>
+                                            <Setter Property="BorderThickness" Value="1"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Style="{StaticResource MessageBorder}" Margin="10">
@@ -28,29 +46,24 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="50"/>
-                                </Grid.ColumnDefinitions>
                                 <TextBlock
                                     Grid.Column="0"
                                     Width="auto"
                                     Grid.Row="0"
                                     Style="{StaticResource ChatNameUserTextBlock}"
                                     Text="NameUser"/>
-                                <TextBlock
-                                    Grid.Column="0"
-                                    MaxWidth="500"
-                                    Width="auto"
-                                    Grid.Row="1"
-                                    Style="{StaticResource ChatTitleUserTextBlock}"
-                                    Text="{Binding TextMessage}"/>
-                                <TextBlock
-                                    Grid.Column="1"
-                                    Margin="0 0 5 8"
-                                    Style="{StaticResource ChatTimeUserTextBlock}"
-                                    Text="15:00"
-                                    Grid.Row="1"/>
+                                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                                    <TextBlock
+                                        MaxWidth="500"
+                                        Width="auto"
+                                        Style="{StaticResource ChatTitleUserTextBlock}"
+                                        Text="{Binding TextMessage}"/>
+                                    <TextBlock
+                                        Width="30"
+                                        Margin="10 10 0 0"
+                                        Style="{StaticResource ChatTimeUserTextBlock}"
+                                        Text="15:00"/>
+                                </StackPanel>
                             </Grid>
                         </Border>
                     </DataTemplate>
