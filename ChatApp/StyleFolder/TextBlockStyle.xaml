@@ -57,4 +57,18 @@
         <Setter Property="TextWrapping" Value="NoWrap"/>
         <Setter Property="Margin" Value="0 0 0 0"/>
     </Style>
+    <Style TargetType="TextBlock" x:Key="ChatTitleTextTextBox" BasedOn="{StaticResource ChatTitleUserTextBlock}">
+        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="Margin" Value="20 0 0 0"/>
+        <Setter Property="Text" Value="Сообщение..."/>
+        <Setter Property="IsHitTestVisible" Value="False"/>
+        <Setter Property="Width" Value="130"/>
+    </Style>
+    <Style x:Key="VisibilityChatTitleTextTextBox" TargetType="TextBlock" BasedOn="{StaticResource ChatTitleTextTextBox}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Text, ElementName=TextChatTextBox}" Value="">
+                <Setter Property="Visibility" Value="Visible"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

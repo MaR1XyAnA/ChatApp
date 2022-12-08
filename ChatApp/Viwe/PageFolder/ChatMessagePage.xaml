@@ -69,6 +69,28 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <Border
+                MinHeight="0"
+                MaxHeight="130"
+                Background="#0d1117"
+                VerticalAlignment="Bottom"
+                CornerRadius="20 20 0 0"
+                Height="auto">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Grid Margin="40 0 0 0">
+                        <TextBox
+                            TextChanged="TextChatTextBox_TextChanged"
+                            x:Name="TextChatTextBox"
+                            Style="{StaticResource ChatTextBox}"/>
+                        <TextBlock
+                            Text="Сообщение..."
+                            x:Name="ChatTextTextBlock"
+                            Style="{StaticResource VisibilityChatTitleTextTextBox}"/>
+                    </Grid>
+                    <Button
+                        Style="{StaticResource EnterTextButton}"/>
+                </StackPanel>
+            </Border>
         </Grid>
     </Border>
 </Page>

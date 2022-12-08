@@ -19,9 +19,6 @@ using System.Windows.Shapes;
 
 namespace ChatApp.Viwe.PageFolder
 {
-    /// <summary>
-    /// Логика взаимодействия для ChatMessagePage.xaml
-    /// </summary>
     public partial class ChatMessagePage : Page
     {
         List<ChatMessageClass> chatMessageClasses = new List<ChatMessageClass>();
@@ -37,6 +34,18 @@ namespace ChatApp.Viwe.PageFolder
             var messagecontent = await message.Content.ReadAsStringAsync();
             chatMessageClasses = JsonConvert.DeserializeObject<List<ChatMessageClass>>(messagecontent);
             MessageListBox.ItemsSource = chatMessageClasses.Where(Сookies => Сookies.PNChatRoom == ListChatAndChatMessageWindow.GetChatRoom.PersonalNumberChatRoom);
+        }
+
+        private void TextChatTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TextChatTextBox.Text.Length == 0)
+            {
+                ChatTextTextBlock.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ChatTextTextBlock.Visibility = Visibility.Hidden;
+            }
         }
     }
 }
