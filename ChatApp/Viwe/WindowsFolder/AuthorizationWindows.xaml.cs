@@ -76,8 +76,8 @@ namespace ChatApp.Viwe.WindowsFolder
                     Properties.Settings.Default.PasswordUser = PasswordPasswordBox.Password; // Сохраняем пароль в приложении
                     Properties.Settings.Default.Save(); // Сохраняем данные в приложении
                 }
-                MainWi mainWi = new MainWi();
-                mainWi.Show();
+                ListChatAndChatMessageWindow listChatAndChatMessageWindow = new ListChatAndChatMessageWindow();
+                listChatAndChatMessageWindow.Show();
                 Close();
             }
             else

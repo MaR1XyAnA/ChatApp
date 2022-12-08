@@ -1,0 +1,60 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="NameAppTextBlock" TargetType="TextBlock">
+        <Setter Property="Text" Value="CollegeChatApp"/>
+        <Setter Property="FontFamily" Value="\ContentFolder\FamilyFolder\#Rubik Glitch"/>
+        <Setter Property="FontSize" Value="50"/>
+        <Setter Property="Foreground" Value="#1d63b8"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="TitleTextBlock" TargetType="TextBlock" BasedOn="{StaticResource NameAppTextBlock}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="#fff"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+    <Style x:Key="NameChatTextBlock" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Width" Value="250"/>
+        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+        <Setter Property="FontSize" Value="17"/>
+        <Setter Property="Foreground" Value="#fff"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+    <Style x:Key="NextUserChat" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+    <Style x:Key="MessageChatTextBlock" TargetType="TextBlock" BasedOn="{StaticResource NextUserChat}">
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+    </Style>
+    <Style x:Key="ChatNameUserTextBlock" TargetType="TextBlock" BasedOn="{StaticResource MessageChatTextBlock}">
+        <Setter Property="Foreground" Value="#1d63b8"/>
+        <Setter Property="TextTrimming" Value="None"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="0 0 0 0"/>
+    </Style>
+    <Style x:Key="ChatTitleUserTextBlock" TargetType="TextBlock" BasedOn="{StaticResource MessageChatTextBlock}">
+        <Setter Property="Foreground" Value="#fff"/>
+        <Setter Property="TextTrimming" Value="None"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Margin" Value="5 0 0 0"/>
+        <Setter Property="Width" Value="auto"/>
+    </Style>
+    <Style x:Key="ChatTimeUserTextBlock" TargetType="TextBlock" BasedOn="{StaticResource MessageChatTextBlock}">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="TextTrimming" Value="None"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="Margin" Value="0 0 0 0"/>
+    </Style>
+</ResourceDictionary>

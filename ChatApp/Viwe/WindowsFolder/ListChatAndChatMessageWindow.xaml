@@ -1,0 +1,138 @@
+﻿<Window x:Class="ChatApp.Viwe.WindowsFolder.ListChatAndChatMessageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Style="{StaticResource WindowsStyle}">
+    <Border Style="{StaticResource MainBorder}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Background="Transparent" x:Name="SpaseBarGrid" MouseDown="SpaseBarGrid_MouseDown" Grid.Row="0">
+                <Border Style="{StaticResource ButtonBorder}"/>
+                <TextBlock
+                    Style="{StaticResource TitleTextBlock}"
+                    Text="ЧАТЫ"
+                    Margin="10 0 0 0"/>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <Button 
+                        ToolTip="СВЕРНУТЬ"
+                        x:Name="ExitButton"
+                        Click="ExitButton_Click"
+                        Content="⍇"
+                        Width="55" 
+                        Height="32"
+                        Style="{StaticResource SpareButton}">
+                        <Button.Effect>
+                            <BlurEffect Radius="1"/>
+                        </Button.Effect>
+                    </Button>
+                    <Button 
+                        ToolTip="СВЕРНУТЬ"
+                        x:Name="RollUpButton"
+                        Click="RollUpButton_Click"
+                        Content="—"
+                        Width="55" 
+                        Height="32"
+                        Style="{StaticResource SpareButton}">
+                        <Button.Effect>
+                            <BlurEffect Radius="1"/>
+                        </Button.Effect>
+                    </Button>
+                    <Button 
+                        Click="CloseButton_Click"
+                        x:Name="CloseButton"
+                        Content="✕"
+                        Width="55" 
+                        Height="32"
+                        Style="{StaticResource SpareButtonClose}">
+                        <Button.Effect>
+                            <BlurEffect Radius="1"/>
+                        </Button.Effect>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="380"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ListBox 
+                    x:Name="ListChatListBox" 
+                    SelectionChanged="ListChatListBox_SelectionChanged" 
+                    Style="{StaticResource ListChatStyle}">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Style.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Style.Resources>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0 5 0 5" Height="auto">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" x:Name="MaskMorderBorder" Style="{StaticResource MaskBorder}"/>
+                                <StackPanel Grid.Column="0">
+                                    <StackPanel.OpacityMask>
+                                        <VisualBrush Visual="{Binding ElementName=MaskMorderBorder}"/>
+                                    </StackPanel.OpacityMask>
+                                    <Image Style="{StaticResource ImageDataBase}"/>
+                                </StackPanel>
+                                <Grid VerticalAlignment="Center" Grid.Column="1" Margin="10 0 0 0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="2*"/>
+                                        <RowDefinition Height="10"/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                        <TextBlock
+                                            Margin="0 0 0 0"
+                                            Style="{StaticResource NameChatTextBlock}"
+                                            Text="{Binding TopicChatRoom}"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                        <TextBlock
+                                            FontStyle="Italic"
+                                            x:Name="UserNameTextBlock"
+                                            Margin="0 0 0 0"
+                                            Style="{StaticResource NextUserChat}"
+                                            Text="NameUser"/>
+                                        <TextBlock
+                                            Margin="2 0 0 0"
+                                            Style="{StaticResource NextUserChat}"
+                                            Text=":"/>
+                                        <TextBlock
+                                            Margin="5 0 0 0"
+                                            Style="{StaticResource MessageChatTextBlock}"
+                                            Text="{Binding GetLastMessage}"/>
+                                    </StackPanel>
+                                    <TextBlock
+                                        Grid.Row="2"
+                                        FontSize="12"
+                                        HorizontalAlignment="Right"
+                                        Margin="0 0 5 0"
+                                        Style="{StaticResource NextUserChat}"
+                                        Text="15:00"/>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Frame
+                    Grid.Column="1"
+                    NavigationUIVisibility="Hidden"
+                    x:Name="MessageFrame"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

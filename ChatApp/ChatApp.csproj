@@ -62,11 +62,17 @@
     <Compile Include="ClassFolder\ChatRoom.cs" />
     <Compile Include="ClassFolder\ChatRoomUserClass.cs" />
     <Compile Include="ClassFolder\ParticalEmploeeClass.cs" />
+    <Compile Include="Viwe\PageFolder\ChatMessagePage.xaml.cs">
+      <DependentUpon>ChatMessagePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Viwe\WindowsFolder\AuthorizationWindows.xaml.cs">
       <DependentUpon>AuthorizationWindows.xaml</DependentUpon>
     </Compile>
     <Compile Include="Viwe\WindowsFolder\ChatMessage.xaml.cs">
       <DependentUpon>ChatMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Viwe\WindowsFolder\ListChatAndChatMessageWindow.xaml.cs">
+      <DependentUpon>ListChatAndChatMessageWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Viwe\WindowsFolder\MainWi.xaml.cs">
       <DependentUpon>MainWi.xaml</DependentUpon>
@@ -76,11 +82,63 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ClassFolder\EmplyeeClass.cs" />
+    <Page Include="StyleFolder\BorderStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StyleFolder\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StyleFolder\CheckBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StyleFolder\ImageStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StyleFolder\ListBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StyleFolder\PageStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StyleFolder\PasswordBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StyleFolder\ScrollBarStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StyleFolder\TextBlockStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StyleFolder\TextBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StyleFolder\WindowStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Viwe\PageFolder\ChatMessagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Viwe\WindowsFolder\AuthorizationWindows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Viwe\WindowsFolder\ChatMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Viwe\WindowsFolder\ListChatAndChatMessageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -121,15 +179,19 @@
     <Resource Include="ContentFolder\IconsFolder\PasswordIcons.png" />
     <Resource Include="ContentFolder\IconsFolder\UsersIcons.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Viwe\PageFolder\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="ContentFolder\IconsFolder\CollegeChatAppIcons.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ContentFolder\IconsFolder\VisebalFols.png" />
     <Resource Include="ContentFolder\IconsFolder\ViseblTrue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ContentFolder\IconsFolder\NoImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ContentFolder\IconsFolder\BackgraundImage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
