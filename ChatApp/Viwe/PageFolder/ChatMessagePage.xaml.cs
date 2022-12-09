@@ -33,7 +33,9 @@ namespace ChatApp.Viwe.PageFolder
             HttpResponseMessage message = await AuthorizationWindows.httpClient.GetAsync(Link);
             var messagecontent = await message.Content.ReadAsStringAsync();
             chatMessageClasses = JsonConvert.DeserializeObject<List<ChatMessageClass>>(messagecontent);
-            MessageListBox.ItemsSource = chatMessageClasses.Where(Сookies => Сookies.PNChatRoom == ListChatAndChatMessageWindow.GetChatRoom.PersonalNumberChatRoom);
+            
+            MessageListBox.ItemsSource = chatMessageClasses.Where(Сookies => 
+            Сookies.PNChatRoom == ListChatAndChatMessageWindow.GetChatRoom.PersonalNumberChatRoom);
         }
 
         private void TextChatTextBox_TextChanged(object sender, TextChangedEventArgs e)

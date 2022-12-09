@@ -61,77 +61,81 @@
                     <ColumnDefinition Width="380"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <ListBox 
-                    x:Name="ListChatListBox" 
-                    SelectionChanged="ListChatListBox_SelectionChanged" 
-                    Style="{StaticResource ListChatStyle}">
-                    <ListBox.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem">
-                            <Style.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="10"/>
-                                </Style>
-                            </Style.Resources>
-                        </Style>
-                    </ListBox.ItemContainerStyle>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Margin="0 5 0 5" Height="auto">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="50"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Border Grid.Column="0" x:Name="MaskMorderBorder" Style="{StaticResource MaskBorder}"/>
-                                <StackPanel Grid.Column="0">
-                                    <StackPanel.OpacityMask>
-                                        <VisualBrush Visual="{Binding ElementName=MaskMorderBorder}"/>
-                                    </StackPanel.OpacityMask>
-                                    <Image Style="{StaticResource ImageDataBase}"/>
-                                </StackPanel>
-                                <Grid VerticalAlignment="Center" Grid.Column="1" Margin="10 0 0 0">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="2*"/>
-                                        <RowDefinition Height="10"/>
-                                    </Grid.RowDefinitions>
-                                    <StackPanel Grid.Row="0" Orientation="Horizontal">
-                                        <TextBlock
+                <Border CornerRadius="0 0 0 20">
+                    <ListBox 
+                        Margin="0 0 0 0"
+                        x:Name="ListChatListBox" 
+                        SelectionChanged="ListChatListBox_SelectionChanged" 
+                        Style="{StaticResource ListChatStyle}">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Style.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="10"/>
+                                    </Style>
+                                </Style.Resources>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0 5 0 5" Height="auto">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="0" x:Name="MaskMorderBorder" Style="{StaticResource MaskBorder}"/>
+                                    <StackPanel Grid.Column="0">
+                                        <StackPanel.OpacityMask>
+                                            <VisualBrush Visual="{Binding ElementName=MaskMorderBorder}"/>
+                                        </StackPanel.OpacityMask>
+                                        <Image Style="{StaticResource ImageDataBase}"/>
+                                    </StackPanel>
+                                    <Grid VerticalAlignment="Center" Grid.Column="1" Margin="10 0 0 0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="2*"/>
+                                            <RowDefinition Height="10"/>
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                            <TextBlock
                                             Margin="0 0 0 0"
                                             Style="{StaticResource NameChatTextBlock}"
                                             Text="{Binding TopicChatRoom}"/>
-                                    </StackPanel>
-                                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                                        <TextBlock
+                                        </StackPanel>
+                                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                            <TextBlock
                                             FontStyle="Italic"
                                             x:Name="UserNameTextBlock"
                                             Margin="0 0 0 0"
                                             Style="{StaticResource NextUserChat}"
                                             Text="NameUser"/>
-                                        <TextBlock
+                                            <TextBlock
                                             Margin="2 0 0 0"
                                             Style="{StaticResource NextUserChat}"
                                             Text=":"/>
-                                        <TextBlock
+                                            <TextBlock
                                             Margin="5 0 0 0"
                                             Style="{StaticResource MessageChatTextBlock}"
                                             Text="{Binding GetLastMessage}"/>
-                                    </StackPanel>
-                                    <TextBlock
+                                        </StackPanel>
+                                        <TextBlock
                                         Grid.Row="2"
                                         FontSize="12"
                                         HorizontalAlignment="Right"
                                         Margin="0 0 5 0"
                                         Style="{StaticResource NextUserChat}"
-                                        Text="15:00"/>
+                                        Text="{Binding GetLastTime}"/>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-                <Frame
-                    Grid.Column="1"
-                    NavigationUIVisibility="Hidden"
-                    x:Name="MessageFrame"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
+                <Border Grid.Column="1">
+                    <Frame
+                        NavigationUIVisibility="Hidden"
+                        x:Name="MessageFrame"/>
+                </Border>
             </Grid>
         </Grid>
     </Border>
