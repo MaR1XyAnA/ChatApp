@@ -7,11 +7,11 @@
       mc:Ignorable="d" 
       Style="{StaticResource AuthorizationStyle}">
     <Border Margin="0" CornerRadius="20">
-        <Border.Background>
-            <ImageBrush ImageSource="\ContentFolder\IconsFolder\BackgraundImage.png" Stretch="UniformToFill"/>
-        </Border.Background>
         <Grid Background="Transparent">
             <ListBox 
+                MinHeight="488"
+                Height="560"
+                VerticalAlignment="Top"
                 x:Name="MessageListBox"
                 Style="{StaticResource ListChatStyle}"
                 Background="Transparent">
@@ -51,7 +51,7 @@
                                     Width="auto"
                                     Grid.Row="0"
                                     Style="{StaticResource ChatNameUserTextBlock}"
-                                    Text="{Binding UsersTable.NameUser}"/>
+                                    Text="{Binding TakeUser}"/>
                                 <StackPanel Orientation="Horizontal" Grid.Row="1">
                                     <TextBlock
                                         MaxWidth="500"
@@ -59,10 +59,10 @@
                                         Style="{StaticResource ChatTitleUserTextBlock}"
                                         Text="{Binding TextMessage}"/>
                                     <TextBlock
-                                        Width="30"
+                                        Width="50"
                                         Margin="10 10 0 0"
                                         Style="{StaticResource ChatTimeUserTextBlock}"
-                                        Text="15:00"/>
+                                        Text="{Binding TakeTime}"/>
                                 </StackPanel>
                             </Grid>
                         </Border>
@@ -79,6 +79,7 @@
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
                     <Grid Margin="40 0 0 0">
                         <TextBox
+                            KeyDown="TextChatTextBox_KeyDown"
                             TextChanged="TextChatTextBox_TextChanged"
                             x:Name="TextChatTextBox"
                             Style="{StaticResource ChatTextBox}"/>
@@ -88,6 +89,8 @@
                             Style="{StaticResource VisibilityChatTitleTextTextBox}"/>
                     </Grid>
                     <Button
+                        x:Name="SendButton"
+                        Click="SendButton_Click"
                         Style="{StaticResource EnterTextButton}"/>
                 </StackPanel>
             </Border>

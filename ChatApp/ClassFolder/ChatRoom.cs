@@ -11,7 +11,7 @@ namespace ChatApp.ClassFolder
         public int PersonalNumberChatRoom { get; set; }
         public string TopicChatRoom { get; set; }
         public string GetLastMessage { get; set; }
+        public string GetLastUser { get; set; }
         public string GetLastTime { get; set; }
-        //public string GetLastUser { get; set; }
     }
 }
