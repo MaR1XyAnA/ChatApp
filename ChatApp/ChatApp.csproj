@@ -179,7 +179,9 @@
     <Resource Include="ContentFolder\IconsFolder\PasswordIcons.png" />
     <Resource Include="ContentFolder\IconsFolder\UsersIcons.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="ContentFolder\IconsFolder\pngegg.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="ContentFolder\IconsFolder\CollegeChatAppIcons.png" />
   </ItemGroup>

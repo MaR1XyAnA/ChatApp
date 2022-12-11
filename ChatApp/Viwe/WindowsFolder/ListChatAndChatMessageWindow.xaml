@@ -63,7 +63,8 @@
                 </Grid.ColumnDefinitions>
                 <Border CornerRadius="0 0 0 20">
                     <ListBox 
-                        Margin="0 0 0 0"
+                        Width="auto"
+                        Margin="0"
                         x:Name="ListChatListBox" 
                         SelectionChanged="ListChatListBox_SelectionChanged" 
                         Style="{StaticResource ListChatStyle}">
@@ -80,8 +81,8 @@
                             <DataTemplate>
                                 <Grid Margin="0 5 0 5" Height="auto">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50"/>
-                                        <ColumnDefinition Width="320"/>
+                                        <ColumnDefinition Width="48"/>
+                                        <ColumnDefinition Width="318"/>
                                     </Grid.ColumnDefinitions>
                                     <Border Grid.Column="0" x:Name="MaskMorderBorder" Style="{StaticResource MaskBorder}"/>
                                     <StackPanel Grid.Column="0">
@@ -98,9 +99,9 @@
                                         </Grid.RowDefinitions>
                                         <StackPanel Grid.Row="0" Orientation="Horizontal">
                                             <TextBlock
-                                            Margin="0 0 0 0"
-                                            Style="{StaticResource NameChatTextBlock}"
-                                            Text="{Binding TopicChatRoom}"/>
+                                                Margin="0 0 0 0"
+                                                Style="{StaticResource NameChatTextBlock}"
+                                                Text="{Binding TopicChatRoom}"/>
                                         </StackPanel>
                                         <StackPanel Grid.Row="1" Orientation="Horizontal">
                                             <TextBlock

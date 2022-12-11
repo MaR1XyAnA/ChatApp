@@ -7,6 +7,9 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Controls;
 using ChatApp.Viwe.PageFolder;
+using System.ComponentModel;
+using System.Windows.Threading;
+using System;
 
 namespace ChatApp.Viwe.WindowsFolder
 {
@@ -15,6 +18,7 @@ namespace ChatApp.Viwe.WindowsFolder
         public List<ChatRoom> _chatRoom = new List<ChatRoom>();
         public List<ChatRoomUserClass> _ChatRoomEmplooes = new List<ChatRoomUserClass>();
         public static ChatRoom GetChatRoom;
+        
         public ListChatAndChatMessageWindow()
         {
             InitializeComponent();

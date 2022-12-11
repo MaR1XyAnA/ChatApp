@@ -3,6 +3,7 @@ using ChatApp.Viwe.WindowsFolder;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -16,11 +17,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace ChatApp.Viwe.PageFolder
 {
     public partial class ChatMessagePage : Page
     {
+        DispatcherTimer dispatcher;
         public static HttpClient httpClient = new HttpClient();
         public static ChatMessageClass chatMessageClass;
         List<ChatMessageClass> chatMessageClasses = new List<ChatMessageClass>();
@@ -29,7 +32,19 @@ namespace ChatApp.Viwe.PageFolder
         {
             InitializeComponent();
             GetMEssage();
+            dispatcher = new DispatcherTimer();
+            dispatcher.Interval = TimeSpan.FromSeconds(0.1);
+            dispatcher.Tick += Dispatcher_Tick;
+            dispatcher.Start();
         }
+
+        private void Dispatcher_Tick(object sender, EventArgs e)
+        {
+            GetMEssage();
+            MessageListBox.SelectedIndex = MessageListBox.Items.Count - 1;
+            MessageListBox.ScrollIntoView(MessageListBox.SelectedItem);
+        }
+
         private async void GetMEssage()
         {
             string Link = "http://localhost:11111/api/ChatMessageTables";
@@ -70,7 +85,12 @@ namespace ChatApp.Viwe.PageFolder
                 (JsonConvert.SerializeObject(message), Encoding.UTF8, JsonString);
             HttpResponseMessage post = await httpClient.PostAsync(ServerAddrwssString, httpContent);
 
-            if (TextChatTextBox.Text != "")
+            if (TextChatTextBox.Text == "")
+            {
+                MessageBox.Show("Напиши что нибудь");
+                return;
+            }
+            else
             {
                 if (post.IsSuccessStatusCode)
                 {
@@ -78,10 +98,6 @@ namespace ChatApp.Viwe.PageFolder
                     chatMessageClass = JsonConvert.DeserializeObject<ChatMessageClass>(sweep);
                     TextChatTextBox.Text = "";
                 }
-            }
-            else
-            {
-                MessageBox.Show("Напиши что нибудь");
             }
             
         }
@@ -104,6 +120,15 @@ namespace ChatApp.Viwe.PageFolder
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
             GetSendMessage();
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(Visibility == Visibility.Visible)
+            {
+                MessageListBox.SelectedIndex = MessageListBox.Items.Count - 1;
+                MessageListBox.ScrollIntoView(MessageListBox.SelectedItem);
+            }
         }
     }
 }
