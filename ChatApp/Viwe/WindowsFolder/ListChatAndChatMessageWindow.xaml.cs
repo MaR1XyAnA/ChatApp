@@ -16,7 +16,8 @@ namespace ChatApp.Viwe.WindowsFolder
     public partial class ListChatAndChatMessageWindow : Window
     {
         //DispatcherTimer dispatcher;
-        public List<ChatRoom> _chatRoom = new List<ChatRoom>();
+        public static List<ChatRoom> _chatRoom = new List<ChatRoom>();
+        public List<EmplyeeClass> emplyeeClasses = new List<EmplyeeClass>();
         public List<ChatRoomUserClass> _ChatRoomEmplooes = new List<ChatRoomUserClass>();
         public static ChatRoom GetChatRoom;
         
@@ -24,6 +25,7 @@ namespace ChatApp.Viwe.WindowsFolder
         {
             InitializeComponent();
             GridLoad();
+            UserTB.Text = AuthorizationWindows.emplyeeClass.User;
             //dispatcher = new DispatcherTimer();
             //dispatcher.Interval = TimeSpan.FromSeconds(0.1);
             //dispatcher.Tick += Dispatcher_Tick;
@@ -45,7 +47,6 @@ namespace ChatApp.Viwe.WindowsFolder
 
             var result = JsonConvert.DeserializeObject<List<ChatRoomUserClass>>(employeecontent)
                 .Where(data => data.PNUser == AuthorizationWindows.emplyeeClass.PersonalNumberUser).ToList();
-
             if (result == null)
             {
                 MessageBox.Show("!У ВАС НЕТ НИОДНОГО ЧАТА!");

@@ -39,5 +39,13 @@ namespace ChatApp.ClassFolder
                 return HelloName;
             }
         }
+        public string User
+        {
+            get
+            {
+                string GetUser = $"{NameUser}";
+                return GetUser;
+            }
+        }
     }
 }

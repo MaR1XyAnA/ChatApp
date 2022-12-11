@@ -41,9 +41,10 @@
     <Style TargetType="TextBox" x:Key="ChatTextBox" BasedOn="{StaticResource MainStyleTextBox}">
         <Setter Property="MinHeight" Value="40"/>
         <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Background" Value="#161b22"/>
         <Setter Property="MaxHeight" Value="120"/>
         <Setter Property="Padding" Value="18 5 20 5"/>
-        <Setter Property="Width" Value="500"/>
+        <Setter Property="Width" Value="650"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="MaxLength" Value="500"/>
         <Setter Property="Margin" Value="0 10 5 10"/>
@@ -52,7 +53,7 @@
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border 
                         x:Name="border"
-                        CornerRadius="20"
+                        CornerRadius="5"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="1"
                         Background="{TemplateBinding Background}">

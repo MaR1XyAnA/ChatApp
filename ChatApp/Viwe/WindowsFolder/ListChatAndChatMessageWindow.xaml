@@ -63,8 +63,10 @@
                 </Grid.ColumnDefinitions>
                 <Border CornerRadius="0 0 0 20">
                     <ListView 
+                        VerticalAlignment="Top"
                         Width="auto"
                         Margin="0"
+                        Height="569"
                         x:Name="ListChatListBox" 
                         SelectionChanged="ListChatListBox_SelectionChanged" 
                         Style="{StaticResource ListChatStyle}">
@@ -129,12 +131,36 @@
                     </ListView>
                 </Border>
                 <Border Grid.Column="1">
-                    <Border.Background>
+                    <!--<Border.Background>
                         <ImageBrush ImageSource="\ContentFolder\IconsFolder\BackgraundImage.png" Stretch="UniformToFill"/>
-                    </Border.Background>
+                    </Border.Background>-->
                     <Frame
                         NavigationUIVisibility="Hidden"
                         x:Name="MessageFrame"/>
+                </Border>
+                <Border Background="#0d1117" VerticalAlignment="Bottom" Height="50" Grid.Column="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Height="30" Width="30" BorderThickness="15" CornerRadius="15" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="MaskMorderBorderAva" Style="{StaticResource MaskBorder}"/>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30">
+                            <StackPanel.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=MaskMorderBorderAva}"/>
+                            </StackPanel.OpacityMask>
+                            <Image HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Style="{StaticResource ImageDataBase}"/>
+                        </StackPanel>
+                        <TextBlock
+                            x:Name="UserTB"
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Margin="5 0 0 0"
+                            Width="auto"
+                            Style="{StaticResource ChatNameUserTextBlock}"
+                            Text="{Binding emplyee}"/>
+                    </Grid>
                 </Border>
             </Grid>
         </Grid>

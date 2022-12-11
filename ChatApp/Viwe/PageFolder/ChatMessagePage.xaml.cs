@@ -23,9 +23,10 @@ namespace ChatApp.Viwe.PageFolder
         public ChatMessagePage()
         {
             InitializeComponent();
+            ChatRoomNameTextBlock.Text = ListChatAndChatMessageWindow.GetChatRoom.TopicChatRoom;
             GetMEssage();
             dispatcher = new DispatcherTimer();
-            dispatcher.Interval = TimeSpan.FromSeconds(0.1);
+            dispatcher.Interval = TimeSpan.FromSeconds(1);
             dispatcher.Tick += Dispatcher_Tick;
             dispatcher.Start();
 
@@ -34,6 +35,9 @@ namespace ChatApp.Viwe.PageFolder
         private void Dispatcher_Tick(object sender, EventArgs e)
         {
             GetMEssage();
+            MessageListBox.SelectedIndex = MessageListBox.Items.Count - 0;
+            MessageListBox.ScrollIntoView(MessageListBox.SelectedItem);
+            dispatcher.Stop();
         }
 
         private async void GetMEssage()
@@ -105,19 +109,6 @@ namespace ChatApp.Viwe.PageFolder
                     GetSendMessage();
                 }
             }
-        }
-
-        private void SendButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(TextChatTextBox.Text))
-            {
-
-            }
-            else
-            {
-                GetSendMessage();
-            }
-            
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)

@@ -9,11 +9,43 @@
       IsVisibleChanged="Page_IsVisibleChanged">
     <Border Margin="0" CornerRadius="20">
         <Grid Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            <Border Background="#161b22" VerticalAlignment="Bottom" Height="50" Grid.Column="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" Grid.RowSpan="2" Height="40" Width="40" BorderThickness="20" CornerRadius="15" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="MaskMorderBorderAva" Style="{StaticResource MaskBorder}"/>
+                    <StackPanel Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40">
+                        <StackPanel.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=MaskMorderBorderAva}"/>
+                        </StackPanel.OpacityMask>
+                        <Image Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="40" Style="{StaticResource ImageDataBase}"/>
+                    </StackPanel>
+                    <TextBlock
+                        x:Name="ChatRoomNameTextBlock"
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        Margin="5 0 0 0"
+                        Width="auto"
+                        Style="{StaticResource ChatNameUserTextBlock}"
+                        Text="{Binding emplyee}"/>
+                </Grid>
+            </Border>
             <ListView 
+                Grid.Row="1"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 Focusable="False"
-                MinHeight="488"
-                Height="560"
                 VerticalAlignment="Top"
                 x:Name="MessageListBox"
                 Style="{StaticResource ListChatStyle}"
@@ -38,37 +70,42 @@
                 </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border x:Name="Bordertext" Style="{StaticResource MessageBorder}" Margin="10">
-                            <Grid>
-                                <uc:MessageChatUserControl/>
-                            </Grid>
-                        </Border>
+                        <uc:MessageChatUserControl/>
+                        <!--<uc:MessageUserChatUserControl/>-->
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <Border
+                Grid.Row="2"
                 MinHeight="0"
-                MaxHeight="130"
                 Background="#0d1117"
                 VerticalAlignment="Bottom"
                 CornerRadius="20 20 19 0"
                 Height="auto">
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Grid Margin="40 0 0 0">
+                    <Grid Margin="0 0 0 0">
                         <TextBox
+                            Padding="32 0 32 0"
                             KeyDown="TextChatTextBox_KeyDown"
                             TextChanged="TextChatTextBox_TextChanged"
                             x:Name="TextChatTextBox"
                             Style="{StaticResource ChatTextBox}"/>
+                        <Button 
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Left"
+                            Margin="5 0 0 0"
+                            Style="{StaticResource PlusButton}"/>
+                        <Button 
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Right"
+                            Margin="0 0 10 0"
+                            Style="{StaticResource PlusButton}"/>
                         <TextBlock
+                            Margin="35 0 0 0"
                             Text="Сообщение..."
                             x:Name="ChatTextTextBlock"
                             Style="{StaticResource VisibilityChatTitleTextTextBox}"/>
                     </Grid>
-                    <Button
-                        x:Name="SendButton"
-                        Click="SendButton_Click"
-                        Style="{StaticResource EnterTextButton}"/>
                 </StackPanel>
             </Border>
         </Grid>
