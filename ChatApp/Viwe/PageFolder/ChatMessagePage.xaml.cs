@@ -3,20 +3,12 @@ using ChatApp.Viwe.WindowsFolder;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace ChatApp.Viwe.PageFolder
@@ -36,18 +28,19 @@ namespace ChatApp.Viwe.PageFolder
             dispatcher.Interval = TimeSpan.FromSeconds(0.1);
             dispatcher.Tick += Dispatcher_Tick;
             dispatcher.Start();
+
         }
 
         private void Dispatcher_Tick(object sender, EventArgs e)
         {
             GetMEssage();
-            MessageListBox.SelectedIndex = MessageListBox.Items.Count - 1;
-            MessageListBox.ScrollIntoView(MessageListBox.SelectedItem);
         }
 
         private async void GetMEssage()
         {
-            string Link = "http://localhost:11111/api/ChatMessageTables";
+            MessageListBox.SelectedIndex = MessageListBox.Items.Count - 1;
+            MessageListBox.ScrollIntoView(MessageListBox.SelectedItem);
+            string Link = "http://192.168.0.103:11111/api/ChatMessageTables";
             HttpResponseMessage message = await AuthorizationWindows.httpClient.GetAsync(Link);
             var messagecontent = await message.Content.ReadAsStringAsync();
             chatMessageClasses = JsonConvert.DeserializeObject<List<ChatMessageClass>>(messagecontent);
@@ -71,7 +64,7 @@ namespace ChatApp.Viwe.PageFolder
         private async void GetSendMessage()
         {
             string ServerAddrwssString, JsonString;
-            ServerAddrwssString = "http://localhost:11111/chat_message";
+            ServerAddrwssString = "http://192.168.0.103:11111/chat_message";
             JsonString = "application/json";
             httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(JsonString));
 
@@ -84,28 +77,18 @@ namespace ChatApp.Viwe.PageFolder
             HttpContent httpContent = new StringContent
                 (JsonConvert.SerializeObject(message), Encoding.UTF8, JsonString);
             HttpResponseMessage post = await httpClient.PostAsync(ServerAddrwssString, httpContent);
-
-            if (TextChatTextBox.Text == "")
+            if (post.IsSuccessStatusCode)
             {
-                MessageBox.Show("Напиши что нибудь");
-                return;
+                var sweep = await post.Content.ReadAsStringAsync();
+                chatMessageClass = JsonConvert.DeserializeObject<ChatMessageClass>(sweep);
+                TextChatTextBox.Text = "";
             }
-            else
-            {
-                if (post.IsSuccessStatusCode)
-                {
-                    var sweep = await post.Content.ReadAsStringAsync();
-                    chatMessageClass = JsonConvert.DeserializeObject<ChatMessageClass>(sweep);
-                    TextChatTextBox.Text = "";
-                }
-            }
-            
         }
 
         public class Sender
         {
-            public int PNUsers {get; set;}
-            public int PNChatRoom { get; set;}
+            public int PNUsers { get; set; }
+            public int PNChatRoom { get; set; }
             public string TextMessage { get; set; }
         }
 
@@ -113,18 +96,33 @@ namespace ChatApp.Viwe.PageFolder
         {
             if (e.Key == Key.Enter)
             {
-                GetSendMessage();
+                if (string.IsNullOrEmpty(TextChatTextBox.Text))
+                {
+
+                }
+                else
+                {
+                    GetSendMessage();
+                }
             }
         }
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
-            GetSendMessage();
+            if (string.IsNullOrEmpty(TextChatTextBox.Text))
+            {
+
+            }
+            else
+            {
+                GetSendMessage();
+            }
+            
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if(Visibility == Visibility.Visible)
+            if (Visibility == Visibility.Visible)
             {
                 MessageListBox.SelectedIndex = MessageListBox.Items.Count - 1;
                 MessageListBox.ScrollIntoView(MessageListBox.SelectedItem);

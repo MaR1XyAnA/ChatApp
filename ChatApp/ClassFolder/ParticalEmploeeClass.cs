@@ -24,6 +24,13 @@ namespace ChatApp.ClassFolder
                 return name;
             }
         }
+        //public string GetWeather
+        //{
+        //    get
+        //    {
+
+        //    }
+        //}
         public string Hello
         {
             get

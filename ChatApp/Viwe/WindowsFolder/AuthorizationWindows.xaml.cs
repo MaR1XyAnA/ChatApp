@@ -18,8 +18,7 @@ namespace ChatApp.Viwe.WindowsFolder
         {
             InitializeComponent();
             if (!string.IsNullOrEmpty(LoginTextBox.Text = Properties.Settings.Default.LoginUser) && // Проверяет, если что-то в этих значениях
-                !string.IsNullOrEmpty(PasswordPasswordBox.Password = Properties.Settings.Default.PasswordUser) /*&&
-                !bool.Parse(RememberMeCheckBox.IsChecked = Properties.Settings.Default.CheckUser)*/) // Если да, то он их выводит в эл. управления
+                !string.IsNullOrEmpty(PasswordPasswordBox.Password = Properties.Settings.Default.PasswordUser)) // Если да, то он их выводит в эл. управления
             {
                 Enter();
             }
@@ -29,6 +28,7 @@ namespace ChatApp.Viwe.WindowsFolder
         {
             LoginTextBox.Text = Properties.Settings.Default.LoginUser; // Вытягиваем в LoginTextBox логин пользователя
             PasswordPasswordBox.Password = Properties.Settings.Default.PasswordUser; // Вытягиваем в PasswordPasswordBox пароль пользователя
+            RememberMeCheckBox.IsChecked = Properties.Settings.Default.CheckUser;
         }
 
         private async void SignIn(object sender, RoutedEventArgs e) // Ассинхронный метод
@@ -47,7 +47,7 @@ namespace ChatApp.Viwe.WindowsFolder
             VisibilityPasswordTrueStackPanel.Visibility = Visibility.Collapsed;
 
             string ServerAddressString, JsonString;
-            ServerAddressString = "http://localhost:11111/api/authorization_user";
+            ServerAddressString = "http://192.168.0.103:11111/api/authorization_user";
             JsonString = "application/json";
 
             httpClient.DefaultRequestHeaders.Accept.Add
@@ -76,6 +76,7 @@ namespace ChatApp.Viwe.WindowsFolder
                     Properties.Settings.Default.PasswordUser = PasswordPasswordBox.Password; // Сохраняем пароль в приложении
                     Properties.Settings.Default.Save(); // Сохраняем данные в приложении
                 }
+                MessageBox.Show(emplyeeClass.Hello);
                 ListChatAndChatMessageWindow listChatAndChatMessageWindow = new ListChatAndChatMessageWindow();
                 listChatAndChatMessageWindow.Show();
                 Close();

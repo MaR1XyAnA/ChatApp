@@ -62,7 +62,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Border CornerRadius="0 0 0 20">
-                    <ListBox 
+                    <ListView 
                         Width="auto"
                         Margin="0"
                         x:Name="ListChatListBox" 
@@ -126,7 +126,7 @@
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
-                    </ListBox>
+                    </ListView>
                 </Border>
                 <Border Grid.Column="1">
                     <Border.Background>

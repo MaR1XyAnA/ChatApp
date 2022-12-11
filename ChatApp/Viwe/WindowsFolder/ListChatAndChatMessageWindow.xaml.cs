@@ -15,6 +15,7 @@ namespace ChatApp.Viwe.WindowsFolder
 {
     public partial class ListChatAndChatMessageWindow : Window
     {
+        //DispatcherTimer dispatcher;
         public List<ChatRoom> _chatRoom = new List<ChatRoom>();
         public List<ChatRoomUserClass> _ChatRoomEmplooes = new List<ChatRoomUserClass>();
         public static ChatRoom GetChatRoom;
@@ -23,14 +24,23 @@ namespace ChatApp.Viwe.WindowsFolder
         {
             InitializeComponent();
             GridLoad();
+            //dispatcher = new DispatcherTimer();
+            //dispatcher.Interval = TimeSpan.FromSeconds(0.1);
+            //dispatcher.Tick += Dispatcher_Tick;
+            //dispatcher.Start();
+        }
+
+        private void Dispatcher_Tick(object sender, EventArgs e)
+        {
+            
         }
 
         public async void GridLoad()
         {
-            HttpResponseMessage chatrooms = await AuthorizationWindows.httpClient.GetAsync("http://localhost:11111/ListChatRooms");
+            HttpResponseMessage chatrooms = await AuthorizationWindows.httpClient.GetAsync("http://192.168.0.103:11111/ListChatRooms");
             var roomscontent = await chatrooms.Content.ReadAsStringAsync();
 
-            HttpResponseMessage employee = await AuthorizationWindows.httpClient.GetAsync("http://localhost:11111/api/ChatRoomUserTables");
+            HttpResponseMessage employee = await AuthorizationWindows.httpClient.GetAsync("http://192.168.0.103:11111/api/ChatRoomUserTables");
             var employeecontent = await employee.Content.ReadAsStringAsync();
 
             var result = JsonConvert.DeserializeObject<List<ChatRoomUserClass>>(employeecontent)
