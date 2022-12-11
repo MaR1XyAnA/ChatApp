@@ -38,7 +38,7 @@
                         <Border Style="{StaticResource MessageBorder}" Margin="10">
                             <Grid
                                 MinHeight="0"
-                                MinWidth="0"
+                                MinWidth="auto"
                                 Margin="10" 
                                 Width="auto" 
                                 Height="auto">
