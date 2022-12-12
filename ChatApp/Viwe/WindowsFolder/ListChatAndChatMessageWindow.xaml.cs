@@ -39,10 +39,10 @@ namespace ChatApp.Viwe.WindowsFolder
 
         public async void GridLoad()
         {
-            HttpResponseMessage chatrooms = await AuthorizationWindows.httpClient.GetAsync("http://192.168.0.103:11111/ListChatRooms");
+            HttpResponseMessage chatrooms = await AuthorizationWindows.httpClient.GetAsync("http://localhost:11111/ListChatRooms");
             var roomscontent = await chatrooms.Content.ReadAsStringAsync();
 
-            HttpResponseMessage employee = await AuthorizationWindows.httpClient.GetAsync("http://192.168.0.103:11111/api/ChatRoomUserTables");
+            HttpResponseMessage employee = await AuthorizationWindows.httpClient.GetAsync("http://localhost:11111/api/ChatRoomUserTables");
             var employeecontent = await employee.Content.ReadAsStringAsync();
 
             var result = JsonConvert.DeserializeObject<List<ChatRoomUserClass>>(employeecontent)
@@ -92,6 +92,7 @@ namespace ChatApp.Viwe.WindowsFolder
         {
             GetChatRoom = ListChatListBox.SelectedItem as ChatRoom;
             MessageFrame.Navigate(new ChatMessagePage());
+            //MessageBox.Show(GetChatRoom.PersonalNumberChatRoom.ToString());
         }
     }
 }

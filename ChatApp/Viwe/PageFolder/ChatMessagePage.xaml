@@ -40,6 +40,14 @@
                         Width="auto"
                         Style="{StaticResource ChatNameUserTextBlock}"
                         Text="{Binding emplyee}"/>
+                    <TextBlock
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        Margin="5 0 0 9"
+                        Style="{StaticResource NextUserChat}"
+                        Text="2 участников"/>
                 </Grid>
             </Border>
             <ListView 

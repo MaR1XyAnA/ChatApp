@@ -35,16 +35,13 @@ namespace ChatApp.Viwe.PageFolder
         private void Dispatcher_Tick(object sender, EventArgs e)
         {
             GetMEssage();
-            MessageListBox.SelectedIndex = MessageListBox.Items.Count - 0;
+            MessageListBox.SelectedIndex = MessageListBox.Items.Count - 1;
             MessageListBox.ScrollIntoView(MessageListBox.SelectedItem);
-            dispatcher.Stop();
         }
 
         private async void GetMEssage()
         {
-            MessageListBox.SelectedIndex = MessageListBox.Items.Count - 1;
-            MessageListBox.ScrollIntoView(MessageListBox.SelectedItem);
-            string Link = "http://192.168.0.103:11111/api/ChatMessageTables";
+            string Link = "http://localhost:11111/api/ChatMessageTables";
             HttpResponseMessage message = await AuthorizationWindows.httpClient.GetAsync(Link);
             var messagecontent = await message.Content.ReadAsStringAsync();
             chatMessageClasses = JsonConvert.DeserializeObject<List<ChatMessageClass>>(messagecontent);
@@ -68,7 +65,7 @@ namespace ChatApp.Viwe.PageFolder
         private async void GetSendMessage()
         {
             string ServerAddrwssString, JsonString;
-            ServerAddrwssString = "http://192.168.0.103:11111/chat_message";
+            ServerAddrwssString = "http://localhost:11111/chat_message";
             JsonString = "application/json";
             httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(JsonString));
 
@@ -100,9 +97,9 @@ namespace ChatApp.Viwe.PageFolder
         {
             if (e.Key == Key.Enter)
             {
-                if (string.IsNullOrEmpty(TextChatTextBox.Text))
+                if (TextChatTextBox.Text == "")
                 {
-
+                    MessageBox.Show("");
                 }
                 else
                 {

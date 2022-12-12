@@ -47,7 +47,7 @@ namespace ChatApp.Viwe.WindowsFolder
             VisibilityPasswordTrueStackPanel.Visibility = Visibility.Collapsed;
 
             string ServerAddressString, JsonString;
-            ServerAddressString = "http://192.168.0.103:11111/api/authorization_user";
+            ServerAddressString = "http://localhost:11111/api/authorization_user";
             JsonString = "application/json";
 
             httpClient.DefaultRequestHeaders.Accept.Add
