@@ -13,5 +13,7 @@ namespace ChatApp.ClassFolder
         public string GetLastMessage { get; set; }
         public string GetLastUser { get; set; }
         public string GetLastTime { get; set; }
+
+        public static int GetChatRoom = 0;
     }
 }

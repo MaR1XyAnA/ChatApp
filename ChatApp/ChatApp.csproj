@@ -61,6 +61,7 @@
     <Compile Include="ClassFolder\ChatMessageClass.cs" />
     <Compile Include="ClassFolder\ChatRoom.cs" />
     <Compile Include="ClassFolder\ChatRoomUserClass.cs" />
+    <Compile Include="ClassFolder\FrameClass.cs" />
     <Compile Include="ClassFolder\ParticalEmploeeClass.cs" />
     <Compile Include="ContentFolder\UserControlFolder\MessageChatUserControl.xaml.cs">
       <DependentUpon>MessageChatUserControl.xaml</DependentUpon>

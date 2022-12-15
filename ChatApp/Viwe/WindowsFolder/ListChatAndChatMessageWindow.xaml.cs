@@ -15,7 +15,7 @@ namespace ChatApp.Viwe.WindowsFolder
 {
     public partial class ListChatAndChatMessageWindow : Window
     {
-        //DispatcherTimer dispatcher;
+        DispatcherTimer dispatcher;
         public static List<ChatRoom> _chatRoom = new List<ChatRoom>();
         public List<EmplyeeClass> emplyeeClasses = new List<EmplyeeClass>();
         public List<ChatRoomUserClass> _ChatRoomEmplooes = new List<ChatRoomUserClass>();
@@ -25,16 +25,17 @@ namespace ChatApp.Viwe.WindowsFolder
         {
             InitializeComponent();
             GridLoad();
+            FrameClass.BodyFrame = MessageFrame;
             UserTB.Text = AuthorizationWindows.emplyeeClass.User;
-            //dispatcher = new DispatcherTimer();
-            //dispatcher.Interval = TimeSpan.FromSeconds(0.1);
-            //dispatcher.Tick += Dispatcher_Tick;
-            //dispatcher.Start();
+            dispatcher = new DispatcherTimer();
+            dispatcher.Interval = TimeSpan.FromSeconds(0.1);
+            dispatcher.Tick += Dispatcher_Tick;
+            dispatcher.Start();
         }
 
         private void Dispatcher_Tick(object sender, EventArgs e)
         {
-            
+            //GridLoad();
         }
 
         public async void GridLoad()
@@ -91,7 +92,7 @@ namespace ChatApp.Viwe.WindowsFolder
         private void ListChatListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             GetChatRoom = ListChatListBox.SelectedItem as ChatRoom;
-            MessageFrame.Navigate(new ChatMessagePage());
+            FrameClass.BodyFrame.Navigate(new ChatMessagePage());
             //MessageBox.Show(GetChatRoom.PersonalNumberChatRoom.ToString());
         }
     }
