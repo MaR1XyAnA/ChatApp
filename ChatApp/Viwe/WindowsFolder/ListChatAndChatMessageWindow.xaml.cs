@@ -92,7 +92,7 @@ namespace ChatApp.Viwe.WindowsFolder
         {
             GetChatRoom = ListChatListBox.SelectedItem as ChatRoom;
             FrameClass.BodyFrame.Navigate(new ChatMessagePage());
-            MessageBox.Show(GetChatRoom.PersonalNumberChatRoom.ToString());
+            //MessageBox.Show(GetChatRoom.PersonalNumberChatRoom.ToString());
         }
     }
 }

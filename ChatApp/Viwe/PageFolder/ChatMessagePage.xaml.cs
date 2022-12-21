@@ -26,7 +26,7 @@ namespace ChatApp.Viwe.PageFolder
             ChatRoomNameTextBlock.Text = ListChatAndChatMessageWindow.GetChatRoom.TopicChatRoom;
             GetMEssage();
             dispatcher = new DispatcherTimer();
-            dispatcher.Interval = TimeSpan.FromSeconds(1);
+            dispatcher.Interval = TimeSpan.FromSeconds(0.3);
             dispatcher.Tick += Dispatcher_Tick;
             dispatcher.Start();
 
@@ -35,6 +35,8 @@ namespace ChatApp.Viwe.PageFolder
         private void Dispatcher_Tick(object sender, EventArgs e)
         {
             GetMEssage();
+            MessageListBox.SelectedIndex = MessageListBox.Items.Count - 1;
+            MessageListBox.ScrollIntoView(MessageListBox.SelectedItem);
         }
 
         private async void GetMEssage()
