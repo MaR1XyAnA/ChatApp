@@ -7,7 +7,6 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Controls;
 using ChatApp.Viwe.PageFolder;
-using System.ComponentModel;
 using System.Windows.Threading;
 using System;
 
@@ -28,7 +27,7 @@ namespace ChatApp.Viwe.WindowsFolder
             FrameClass.BodyFrame = MessageFrame;
             UserTB.Text = AuthorizationWindows.emplyeeClass.User;
             dispatcher = new DispatcherTimer();
-            dispatcher.Interval = TimeSpan.FromSeconds(0.1);
+            dispatcher.Interval = TimeSpan.FromSeconds(5);
             dispatcher.Tick += Dispatcher_Tick;
             dispatcher.Start();
         }
@@ -93,7 +92,7 @@ namespace ChatApp.Viwe.WindowsFolder
         {
             GetChatRoom = ListChatListBox.SelectedItem as ChatRoom;
             FrameClass.BodyFrame.Navigate(new ChatMessagePage());
-            //MessageBox.Show(GetChatRoom.PersonalNumberChatRoom.ToString());
+            MessageBox.Show(GetChatRoom.PersonalNumberChatRoom.ToString());
         }
     }
 }

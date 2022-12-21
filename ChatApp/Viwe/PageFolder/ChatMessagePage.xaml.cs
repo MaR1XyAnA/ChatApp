@@ -35,8 +35,6 @@ namespace ChatApp.Viwe.PageFolder
         private void Dispatcher_Tick(object sender, EventArgs e)
         {
             GetMEssage();
-            MessageListBox.SelectedIndex = MessageListBox.Items.Count - 1;
-            MessageListBox.ScrollIntoView(MessageListBox.SelectedItem);
         }
 
         private async void GetMEssage()
@@ -97,13 +95,12 @@ namespace ChatApp.Viwe.PageFolder
         {
             if (e.Key == Key.Enter)
             {
-                if (TextChatTextBox.Text == "")
-                {
-                    MessageBox.Show("");
-                }
+                if (TextChatTextBox.Text == ""){}
                 else
                 {
                     GetSendMessage();
+                    MessageListBox.SelectedIndex = MessageListBox.Items.Count - 1;
+                    MessageListBox.ScrollIntoView(MessageListBox.SelectedItem);
                 }
             }
         }
